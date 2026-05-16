@@ -25,17 +25,29 @@ export async function initDb() {
         referrer_host TEXT,
         source_type TEXT,
         country_code TEXT,
-        user_agent TEXT
+        user_agent TEXT,
+        ip_address TEXT,
+        language TEXT,
+        device_type TEXT,
+        os_name TEXT,
+        browser_name TEXT
       )
     `;
         await sql`ALTER TABLE redirect_click_events ADD COLUMN IF NOT EXISTS referrer_host TEXT`;
         await sql`ALTER TABLE redirect_click_events ADD COLUMN IF NOT EXISTS source_type TEXT`;
         await sql`ALTER TABLE redirect_click_events ADD COLUMN IF NOT EXISTS country_code TEXT`;
         await sql`ALTER TABLE redirect_click_events ADD COLUMN IF NOT EXISTS user_agent TEXT`;
+        await sql`ALTER TABLE redirect_click_events ADD COLUMN IF NOT EXISTS ip_address TEXT`;
+        await sql`ALTER TABLE redirect_click_events ADD COLUMN IF NOT EXISTS language TEXT`;
+        await sql`ALTER TABLE redirect_click_events ADD COLUMN IF NOT EXISTS device_type TEXT`;
+        await sql`ALTER TABLE redirect_click_events ADD COLUMN IF NOT EXISTS os_name TEXT`;
+        await sql`ALTER TABLE redirect_click_events ADD COLUMN IF NOT EXISTS browser_name TEXT`;
         await sql`CREATE INDEX IF NOT EXISTS redirect_click_events_redirect_id_idx ON redirect_click_events(redirect_id)`;
         await sql`CREATE INDEX IF NOT EXISTS redirect_click_events_clicked_at_idx ON redirect_click_events(clicked_at)`;
         await sql`CREATE INDEX IF NOT EXISTS redirect_click_events_source_type_idx ON redirect_click_events(source_type)`;
         await sql`CREATE INDEX IF NOT EXISTS redirect_click_events_referrer_host_idx ON redirect_click_events(referrer_host)`;
+        await sql`CREATE INDEX IF NOT EXISTS redirect_click_events_device_type_idx ON redirect_click_events(device_type)`;
+        await sql`CREATE INDEX IF NOT EXISTS redirect_click_events_browser_name_idx ON redirect_click_events(browser_name)`;
         await sql`
       CREATE TABLE IF NOT EXISTS redirect_wait_events (
         id BIGSERIAL PRIMARY KEY,

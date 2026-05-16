@@ -2,6 +2,7 @@ import sql, { initDb } from '@/lib/db';
 import { headers } from 'next/headers';
 import { notFound } from 'next/navigation';
 import RedirectPageClient from './RedirectPageClient';
+import { UAParser } from 'ua-parser-js';
 
 function parseHost(rawUrl: string | null): string | null {
     if (!rawUrl) return null;
@@ -86,8 +87,15 @@ export default async function RedirectPage({
         const origin = headerStore.get('origin');
         const secFetchSite = headerStore.get('sec-fetch-site');
         const currentHost = headerStore.get('host');
-        const userAgent = headerStore.get('user-agent');
+        const userAgent = headerStore.get('user-agent') || '';
         const countryCode = headerStore.get('x-vercel-ip-country') || headerStore.get('cf-ipcountry');
+        const ipAddress = headerStore.get('x-forwarded-for')?.split(',')[0] || headerStore.get('x-real-ip');
+        const language = headerStore.get('accept-language')?.split(',')[0].split(';')[0];
+
+        const ua = new UAParser(userAgent).getResult();
+        const browserName = ua.browser.name || 'Unknown';
+        const osName = ua.os.name || 'Unknown';
+        const deviceType = ua.device.type || 'desktop';
 
         const referrerHost = parseHost(referer);
         const originHost = parseHost(origin);
@@ -103,8 +111,14 @@ export default async function RedirectPage({
             // Increment clicks immediately when the page is loaded
             await sql`UPDATE redirects SET clicks = clicks + 1 WHERE id = ${slug}`;
             await sql`
-              INSERT INTO redirect_click_events (redirect_id, referrer_host, source_type, country_code, user_agent)
-              VALUES (${slug}, ${referrerHost}, ${sourceType}, ${countryCode}, ${userAgent})
+              INSERT INTO redirect_click_events (
+                redirect_id, referrer_host, source_type, country_code, user_agent, 
+                ip_address, language, device_type, os_name, browser_name
+              )
+              VALUES (
+                ${slug}, ${referrerHost}, ${sourceType}, ${countryCode}, ${userAgent},
+                ${ipAddress}, ${language}, ${deviceType}, ${osName}, ${browserName}
+              )
             `;
             try {
                 await sql`

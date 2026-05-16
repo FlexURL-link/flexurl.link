@@ -60,6 +60,26 @@ export interface UserLinkStats {
         referrer_host: string;
         clicks: number;
     }>;
+    topCountries: Array<{
+        country_code: string;
+        clicks: number;
+    }>;
+    topDevices: Array<{
+        device_type: string;
+        clicks: number;
+    }>;
+    topBrowsers: Array<{
+        browser_name: string;
+        clicks: number;
+    }>;
+    topOS: Array<{
+        os_name: string;
+        clicks: number;
+    }>;
+    topLanguages: Array<{
+        language: string;
+        clicks: number;
+    }>;
 }
 
 export interface UserRedirectItem {
@@ -366,6 +386,60 @@ export async function getUserRedirectLinkStats(id: string): Promise<UserLinkStat
       LIMIT 6
     `;
 
+        const { rows: countriesRows } = await sql`
+      SELECT
+        COALESCE(country_code, 'Unknown') AS country_code,
+        COUNT(*)::int AS clicks
+      FROM redirect_click_events
+      WHERE redirect_id = ${id}
+      GROUP BY COALESCE(country_code, 'Unknown')
+      ORDER BY clicks DESC
+      LIMIT 10
+    `;
+
+        const { rows: devicesRows } = await sql`
+      SELECT
+        COALESCE(device_type, 'desktop') AS device_type,
+        COUNT(*)::int AS clicks
+      FROM redirect_click_events
+      WHERE redirect_id = ${id}
+      GROUP BY COALESCE(device_type, 'desktop')
+      ORDER BY clicks DESC
+    `;
+
+        const { rows: browsersRows } = await sql`
+      SELECT
+        COALESCE(browser_name, 'Unknown') AS browser_name,
+        COUNT(*)::int AS clicks
+      FROM redirect_click_events
+      WHERE redirect_id = ${id}
+      GROUP BY COALESCE(browser_name, 'Unknown')
+      ORDER BY clicks DESC
+      LIMIT 5
+    `;
+
+        const { rows: osRows } = await sql`
+      SELECT
+        COALESCE(os_name, 'Unknown') AS os_name,
+        COUNT(*)::int AS clicks
+      FROM redirect_click_events
+      WHERE redirect_id = ${id}
+      GROUP BY COALESCE(os_name, 'Unknown')
+      ORDER BY clicks DESC
+      LIMIT 5
+    `;
+
+        const { rows: languagesRows } = await sql`
+      SELECT
+        COALESCE(language, 'Unknown') AS language,
+        COUNT(*)::int AS clicks
+      FROM redirect_click_events
+      WHERE redirect_id = ${id}
+      GROUP BY COALESCE(language, 'Unknown')
+      ORDER BY clicks DESC
+      LIMIT 5
+    `;
+
         const totals = totalsRows[0] as { clicks: number; last24h: number; last7d: number } | undefined;
         const waitTotals = waitRows[0] as { stayed_until_redirect: number; left_before_redirect: number } | undefined;
 
@@ -381,6 +455,11 @@ export async function getUserRedirectLinkStats(id: string): Promise<UserLinkStat
             waitLast7Days: waitLast7DaysRows as Array<{ date: string; stayed: number; left: number }>,
             trafficSources: trafficSourcesRows as Array<{ source: string; clicks: number }>,
             topReferrers: topReferrersRows as Array<{ referrer_host: string; clicks: number }>,
+            topCountries: countriesRows as Array<{ country_code: string; clicks: number }>,
+            topDevices: devicesRows as Array<{ device_type: string; clicks: number }>,
+            topBrowsers: browsersRows as Array<{ browser_name: string; clicks: number }>,
+            topOS: osRows as Array<{ os_name: string; clicks: number }>,
+            topLanguages: languagesRows as Array<{ language: string; clicks: number }>,
         };
     } catch (error) {
         return {
@@ -395,6 +474,11 @@ export async function getUserRedirectLinkStats(id: string): Promise<UserLinkStat
             waitLast7Days: [],
             trafficSources: [],
             topReferrers: [],
+            topCountries: [],
+            topDevices: [],
+            topBrowsers: [],
+            topOS: [],
+            topLanguages: [],
         };
     }
 }

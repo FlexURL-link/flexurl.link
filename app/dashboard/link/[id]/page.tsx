@@ -133,6 +133,89 @@ export default async function LinkStatsPage({ params }: { params: Promise<{ id: 
             </article>
           </div>
 
+          <div className="analytics-grid">
+            <article className="card-block">
+              <h3>Pays (Top 10)</h3>
+              <div className="analytics-list">
+                {stats.topCountries.length === 0 ? (
+                  <p className="empty-sub">Aucune donnée</p>
+                ) : (
+                  stats.topCountries.map((c) => (
+                    <div key={c.country_code} className="analytics-row">
+                      <div className="analytics-label">
+                        <span className="flag-icon">{c.country_code === 'Unknown' ? '🌍' : `📍 ${c.country_code}`}</span>
+                        <span>{c.country_code}</span>
+                      </div>
+                      <div className="analytics-bar-wrap">
+                        <div 
+                          className="analytics-bar" 
+                          style={{ width: `${(c.clicks / stats.totals.clicks) * 100}%` }}
+                        />
+                      </div>
+                      <span className="analytics-count">{c.clicks}</span>
+                    </div>
+                  ))
+                )}
+              </div>
+            </article>
+
+            <article className="card-block">
+              <h3>Appareils</h3>
+              <div className="analytics-list">
+                {stats.topDevices.map((d) => (
+                  <div key={d.device_type} className="analytics-row">
+                    <span className="analytics-label" style={{ textTransform: 'capitalize' }}>
+                      {d.device_type === 'mobile' ? '📱 Mobile' : d.device_type === 'tablet' ? '平板 Tablet' : '💻 Desktop'}
+                    </span>
+                    <div className="analytics-bar-wrap">
+                      <div 
+                        className="analytics-bar brand-bar" 
+                        style={{ width: `${(d.clicks / stats.totals.clicks) * 100}%` }}
+                      />
+                    </div>
+                    <span className="analytics-count">{d.clicks}</span>
+                  </div>
+                ))}
+              </div>
+            </article>
+
+            <article className="card-block">
+              <h3>Navigateurs</h3>
+              <div className="analytics-list">
+                {stats.topBrowsers.map((b) => (
+                  <div key={b.browser_name} className="analytics-row">
+                    <span className="analytics-label">{b.browser_name}</span>
+                    <div className="analytics-bar-wrap">
+                      <div 
+                        className="analytics-bar alt-bar" 
+                        style={{ width: `${(b.clicks / stats.totals.clicks) * 100}%` }}
+                      />
+                    </div>
+                    <span className="analytics-count">{b.clicks}</span>
+                  </div>
+                ))}
+              </div>
+            </article>
+
+            <article className="card-block">
+              <h3>Systèmes</h3>
+              <div className="analytics-list">
+                {stats.topOS.map((o) => (
+                  <div key={o.os_name} className="analytics-row">
+                    <span className="analytics-label">{o.os_name}</span>
+                    <div className="analytics-bar-wrap">
+                      <div 
+                        className="analytics-bar soft-bar" 
+                        style={{ width: `${(o.clicks / stats.totals.clicks) * 100}%` }}
+                      />
+                    </div>
+                    <span className="analytics-count">{o.clicks}</span>
+                  </div>
+                ))}
+              </div>
+            </article>
+          </div>
+
           <article className="card-block">
             <div className="trend-head">
               <h3>Tendance attente / abandon (7 jours)</h3>
