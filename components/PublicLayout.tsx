@@ -83,8 +83,8 @@ export function PublicFooter() {
 
           <div>
             <h4 className="footer-col-title">Contact</h4>
-            <a href="mailto:contact@drayko.xyz" className="footer-link">contact@drayko.xyz</a>
-            <a href="https://github.com/drayko" target="_blank" rel="noreferrer" className="footer-link">GitHub</a>
+            <a href="mailto:contact@flexurl.link" className="footer-link">contact@flexurl.link</a>
+            <a href="https://codeberg.org/ddrayko/FlexURL" target="_blank" rel="noreferrer" className="footer-link">Codeberg</a>
           </div>
         </div>
 
