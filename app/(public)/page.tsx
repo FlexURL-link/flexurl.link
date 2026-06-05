@@ -195,7 +195,7 @@ export default function Home() {
         </div>
 
         <div className="bento">
-          <article className="bento-card bento-large animate-in">
+          <article className="bento-card bento-wide animate-in">
             <div className="bento-head">
               <div className="bento-icon indigo"><IconChart /></div>
               <h3>Detailed analytics</h3>
@@ -203,7 +203,7 @@ export default function Home() {
             </div>
             <div className="bento-visual">
               <div className="mini-line-chart" aria-hidden="true">
-                <svg viewBox="0 0 280 120" preserveAspectRatio="none" style={{ width: '100%', height: '120px' }}>
+                <svg viewBox="0 0 560 140" preserveAspectRatio="none" style={{ width: '100%', height: '140px' }}>
                   <defs>
                     <linearGradient id="greenGradient" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="0%" stopColor="#10b981" stopOpacity="0.3" />
@@ -215,7 +215,7 @@ export default function Home() {
                     </linearGradient>
                   </defs>
                   <path
-                    d="M20,90 C55,70 95,50 115,40 C135,30 155,35 180,30 C205,25 225,35 260,25"
+                    d="M30,105 C85,85 140,90 195,55 C250,20 305,25 360,20 C415,15 470,30 530,35"
                     stroke="#10b981"
                     strokeWidth="2.5"
                     fill="url(#greenGradient)"
@@ -224,7 +224,7 @@ export default function Home() {
                     strokeDasharray="none"
                   />
                   <path
-                    d="M20,100 C55,85 95,75 115,70 C135,65 155,60 180,55 C205,50 225,45 260,40"
+                    d="M30,120 C85,95 140,75 195,55 C250,35 305,35 360,30 C415,25 470,40 530,90"
                     stroke="#ef4444"
                     strokeWidth="2.5"
                     fill="url(#redGradient)"
@@ -234,6 +234,11 @@ export default function Home() {
                   />
                 </svg>
               </div>
+            </div>
+          </article>
+
+          <article className="bento-card animate-in">
+            <div className="bento-visual">
               <div className="mini-chart">
                 <div className="mini-bar" style={{ height: '40%' }} />
                 <div className="mini-bar" style={{ height: '70%' }} />
