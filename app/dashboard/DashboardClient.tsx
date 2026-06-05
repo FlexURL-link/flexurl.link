@@ -256,7 +256,7 @@ export default function DashboardClient({
                 <div className="form-field">
                   <label className="form-label" htmlFor="slug">Custom slug <span className="form-hint">(optional)</span></label>
                   <div className="input-group">
-                    <span className="input-group-prefix">drayko.xyz/</span>
+                    <span className="input-group-prefix">flexurl.link/</span>
                     <input
                       id="slug"
                       type="text"

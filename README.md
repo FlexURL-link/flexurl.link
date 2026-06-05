@@ -1,6 +1,6 @@
-# 🔗 DraykoRedirect
+# 🔗 FlexURL
 
-Welcome to **DraykoRedirect** 🚀
+Welcome to **FlexURL** 🚀
 
 This is a small web service used to create simple URL redirections.
 You can generate short links that redirect to any destination URL.

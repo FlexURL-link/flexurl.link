@@ -70,7 +70,7 @@ export function DashboardShell({
         <div className="sidebar-brand">
           <Link href="/" className="brand">
             <span className="brand-mark">D</span>
-            <span>Drayko</span>
+            <span>FlexURL</span>
           </Link>
           <button
             className="btn btn-icon btn-ghost mobile-only"
@@ -137,7 +137,7 @@ export function DashboardShell({
             </button>
             <Link href="/dashboard" className="brand desktop-only" style={{ fontSize: '1rem' }}>
               <span className="brand-mark" style={{ width: 28, height: 28, fontSize: '0.85rem' }}>D</span>
-              <span>DraykoRedirect</span>
+              <span>FlexURL</span>
             </Link>
           </div>
           <div className="dashboard-topbar-actions">

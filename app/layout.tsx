@@ -3,8 +3,8 @@ import { ClerkProvider } from '@clerk/nextjs'
 import './globals.css'
 
 export const metadata: Metadata = {
-    title: 'DraykoRedirect | Modern URL Redirection & Analytics',
-    description: 'Transform your long links into short, memorable URLs and track your performance in real time with DraykoRedirect.',
+    title: 'FlexURL | Modern URL Redirection & Analytics',
+    description: 'Transform your long links into short, memorable URLs and track your performance in real time with FlexURL.',
 }
 
 export default function RootLayout({

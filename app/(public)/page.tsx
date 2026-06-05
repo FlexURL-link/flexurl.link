@@ -69,7 +69,7 @@ export default function Home() {
             </h1>
 
             <p className="text-balance animate-in delay-3">
-              DraykoRedirect shortens, secures and analyzes your URLs in real time.
+              FlexURL shortens, secures and analyzes your URLs in real time.
               A modern infrastructure built for creators, marketers and developers.
             </p>
 
@@ -104,7 +104,7 @@ export default function Home() {
                   <span /> <span /> <span />
                 </div>
                 <div className="browser-url">
-                  <span className="lock">🔒</span> redirect.drayko.xyz/dashboard
+                  <span className="lock">🔒</span> flexurl.link/dashboard
                 </div>
               </div>
 
@@ -127,7 +127,7 @@ export default function Home() {
                 <div className="mock-row highlight">
                   <div className="mock-label primary">Short link generated</div>
                   <div className="mock-field">
-                    <span className="mock-value-mono primary">redirect.drayko.xyz/</span>
+                    <span className="mock-value-mono primary">flexurl.link/</span>
                     <span className="mock-value-mono brand">awesome-git</span>
                     <span className="mock-copy">Copy</span>
                   </div>
@@ -230,11 +230,11 @@ export default function Home() {
             <p>Create on-brand links that are easy to remember and share.</p>
             <div className="bento-slug-demo">
               <div className="slug-mock">
-                <span className="slug-host">redirect.drayko.xyz/</span>
+                <span className="slug-host">flexurl.link/</span>
                 <span className="slug-custom">launch-day</span>
               </div>
               <div className="slug-mock alt">
-                <span className="slug-host">redirect.drayko.xyz/</span>
+                <span className="slug-host">flexurl.link/</span>
                 <span className="slug-custom">summer-sale</span>
               </div>
             </div>
@@ -291,7 +291,7 @@ export default function Home() {
             <p>Pick a short, memorable slug that matches your brand.</p>
             <div className="step-visual">
               <div className="code-line">
-                <span className="code-mono muted">drayko.xyz/</span>
+                <span className="code-mono muted">flexurl.link/</span>
                 <span className="code-mono brand">my-link</span>
                 <span className="cursor-blink" />
               </div>
@@ -325,7 +325,7 @@ export default function Home() {
           <div className="cta-content">
             <span className="eyebrow eyebrow-on-dark"><span className="eyebrow-dot" />Ready to start?</span>
             <h2>Take your links to the next level.</h2>
-            <p>Join thousands of users who trust DraykoRedirect to power their traffic.</p>
+            <p>Join thousands of users who trust FlexURL to power their traffic.</p>
             <div className="cta-actions">
               <Link href="/dashboard" className="btn btn-gradient">
                 Create my first link
@@ -338,9 +338,9 @@ export default function Home() {
           </div>
 
           <div className="cta-decoration" aria-hidden="true">
-            <div className="dec-link">drayko.xyz/<span>launch</span></div>
-            <div className="dec-link">drayko.xyz/<span>summer</span></div>
-            <div className="dec-link">drayko.xyz/<span>deal-2026</span></div>
+            <div className="dec-link">flexurl.link/<span>launch</span></div>
+            <div className="dec-link">flexurl.link/<span>summer</span></div>
+            <div className="dec-link">flexurl.link/<span>deal-2026</span></div>
           </div>
         </div>
       </section>

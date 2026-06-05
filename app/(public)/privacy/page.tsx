@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy · DraykoRedirect',
-  description: 'How DraykoRedirect collects, uses and protects your personal data.',
+  title: 'Privacy Policy · FlexURL',
+  description: 'How FlexURL collects, uses and protects your personal data.',
 };
 
 const sections = [
@@ -51,7 +51,7 @@ export default function PrivacyPage() {
           <div className="legal-body">
             <h2 id="introduction">1. Introduction</h2>
             <p>
-              DraykoRedirect (hereafter "we", "our", "the Service") is operated with respect for
+              FlexURL (hereafter "we", "our", "the Service") is operated with respect for
               its users' privacy and in compliance with the General Data Protection Regulation (GDPR)
               and applicable data protection laws.
             </p>
@@ -119,7 +119,7 @@ export default function PrivacyPage() {
 
             <h2 id="cookies">4. Cookies</h2>
             <p>
-              DraykoRedirect uses a minimal number of cookies and trackers, only for strictly
+              FlexURL uses a minimal number of cookies and trackers, only for strictly
               necessary purposes:
             </p>
             <ul>
@@ -197,7 +197,7 @@ export default function PrivacyPage() {
               <li><strong>Right to lodge a complaint</strong> with your local data protection authority.</li>
             </ul>
             <p>
-              To exercise any of these rights, contact us at <a href="mailto:privacy@drayko.xyz">privacy@drayko.xyz</a>.
+              To exercise any of these rights, contact us at <a href="mailto:privacy@flexurl.link">privacy@flexurl.link</a>.
               We will respond within a maximum of one month.
             </p>
 
@@ -221,8 +221,8 @@ export default function PrivacyPage() {
               us at:
             </p>
             <ul>
-              <li>📧 <a href="mailto:privacy@drayko.xyz">privacy@drayko.xyz</a></li>
-              <li>📬 DraykoRedirect — Privacy Team</li>
+              <li>📧 <a href="mailto:privacy@flexurl.link">privacy@flexurl.link</a></li>
+              <li>📬 FlexURL — Privacy Team</li>
             </ul>
           </div>
         </div>

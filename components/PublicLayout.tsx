@@ -29,7 +29,7 @@ export function PublicNav() {
       <div className="container landing-nav-inner" style={{ position: 'relative', zIndex: 1 }}>
         <Link href="/" className="brand">
           <span className="brand-mark">D</span>
-          <span>DraykoRedirect</span>
+          <span>FlexURL</span>
         </Link>
         <div className="nav-links">
           <Link href="/#features" className="nav-link">Features</Link>
@@ -53,7 +53,7 @@ export function PublicFooter() {
           <div>
             <Link href="/" className="brand" style={{ marginBottom: '1rem' }}>
               <span className="brand-mark">D</span>
-              <span>DraykoRedirect</span>
+              <span>FlexURL</span>
             </Link>
             <p style={{ fontSize: '0.92rem', maxWidth: 320, marginTop: '0.85rem' }}>
               The modern platform to shorten, manage and analyze your links in real time.
@@ -87,7 +87,7 @@ export function PublicFooter() {
         </div>
 
         <div className="footer-bottom">
-          <span>© 2026 DraykoRedirect. Built for performance.</span>
+          <span>© 2026 FlexURL. Built for performance.</span>
           <span className="footer-tag">
             <span className="status-dot" />
             Service online · 99.9% uptime

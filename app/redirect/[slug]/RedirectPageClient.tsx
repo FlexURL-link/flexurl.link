@@ -106,7 +106,7 @@ export default function RedirectPageClient({ url, eventToken }: { url: string; e
 
         <p style={{ marginTop: '1.5rem', fontSize: '0.82rem', color: 'var(--text-faint)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}>
           <IconShield />
-          Powered by <strong style={{ color: 'var(--text-secondary)', fontWeight: 700 }}>DraykoRedirect</strong>
+          Powered by <strong style={{ color: 'var(--text-secondary)', fontWeight: 700 }}>FlexURL</strong>
         </p>
       </div>
     </div>

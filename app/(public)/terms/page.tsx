@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service · DraykoRedirect',
-  description: 'Terms of use of the DraykoRedirect service: rules, responsibilities, intellectual property and applicable law.',
+  title: 'Terms of Service · FlexURL',
+  description: 'Terms of use of the FlexURL service: rules, responsibilities, intellectual property and applicable law.',
 };
 
 const sections = [
@@ -32,7 +32,7 @@ export default function TermsPage() {
           <span className="eyebrow"><span className="eyebrow-dot" />Legal</span>
           <h1 className="animate-in">Terms of <span className="gradient-text">Service</span></h1>
           <p className="animate-in delay-1">
-            These Terms of Service govern the use of DraykoRedirect. By creating an account or
+            These Terms of Service govern the use of FlexURL. By creating an account or
             using the Service, you agree to the conditions described below.
           </p>
           <div className="legal-meta">
@@ -54,7 +54,7 @@ export default function TermsPage() {
           <div className="legal-body">
             <h2 id="acceptance">1. Acceptance of the Terms</h2>
             <p>
-              These Terms of Service (hereafter "Terms") govern the use of the DraykoRedirect service
+              These Terms of Service (hereafter "Terms") govern the use of the FlexURL service
               (hereafter "the Service"). By accessing the Service, creating an account, or using any
               of its features, you acknowledge that you have read, understood and unconditionally
               accepted these Terms.
@@ -66,7 +66,7 @@ export default function TermsPage() {
 
             <h2 id="definitions">2. Definitions</h2>
             <ul>
-              <li><strong>"Service"</strong>: the DraykoRedirect platform and all of its URL shortening, management and analytics features.</li>
+              <li><strong>"Service"</strong>: the FlexURL platform and all of its URL shortening, management and analytics features.</li>
               <li><strong>"User"</strong>: any individual or legal entity that has created an account on the Service.</li>
               <li><strong>"Link"</strong>: any shortened URL generated through the Service, associated with a destination URL.</li>
               <li><strong>"User Content"</strong>: any item (URL, slug, metadata) submitted by the User in the course of using the Service.</li>
@@ -74,7 +74,7 @@ export default function TermsPage() {
             </ul>
 
             <h2 id="service">3. Service description</h2>
-            <p>DraykoRedirect is a URL shortening and management service. It allows in particular:</p>
+            <p>FlexURL is a URL shortening and management service. It allows in particular:</p>
             <ul>
               <li>Creation of personalized short links from long URLs;</li>
               <li>Centralized management of links and slugs;</li>
@@ -139,8 +139,8 @@ export default function TermsPage() {
             <h2 id="ip">7. Intellectual property</h2>
             <p>
               All elements of the Service (texts, graphics, logo, source code, interface, database,
-              trademark "DraykoRedirect") are protected by applicable intellectual property laws and
-              remain the exclusive property of DraykoRedirect or its licensors.
+              trademark "FlexURL") are protected by applicable intellectual property laws and
+              remain the exclusive property of FlexURL or its licensors.
             </p>
             <p>
               Any unauthorized reproduction, representation, modification or exploitation of all or
@@ -172,7 +172,7 @@ export default function TermsPage() {
             </p>
 
             <h2 id="liability">10. Limitation of liability</h2>
-            <p>To the extent permitted by applicable law, DraykoRedirect shall not be liable for:</p>
+            <p>To the extent permitted by applicable law, FlexURL shall not be liable for:</p>
             <ul>
               <li>Indirect, consequential, special or punitive damages;</li>
               <li>Loss of profits, revenue, data, business opportunities or goodwill;</li>
@@ -198,7 +198,7 @@ export default function TermsPage() {
             </ul>
             <p>
               You may delete your account at any time from your dashboard or by contacting us at
-              <a href="mailto:privacy@drayko.xyz">privacy@drayko.xyz</a>. Deletion entails the erasure
+              <a href="mailto:privacy@flexurl.link">privacy@flexurl.link</a>. Deletion entails the erasure
               of your data in accordance with our privacy policy.
             </p>
 
@@ -227,9 +227,9 @@ export default function TermsPage() {
             <h2 id="contact">14. Contact</h2>
             <p>For any question regarding these Terms, you can contact us:</p>
             <ul>
-              <li>📧 <a href="mailto:legal@drayko.xyz">legal@drayko.xyz</a></li>
-              <li>📧 General support: <a href="mailto:contact@drayko.xyz">contact@drayko.xyz</a></li>
-              <li>🌐 Website: <a href="https://drayko.xyz" target="_blank" rel="noreferrer">drayko.xyz</a></li>
+              <li>📧 <a href="mailto:legal@flexurl.link">legal@flexurl.link</a></li>
+              <li>📧 General support: <a href="mailto:contact@flexurl.link">contact@flexurl.link</a></li>
+              <li>🌐 Website: <a href="https://flexurl.link" target="_blank" rel="noreferrer">flexurl.link</a></li>
             </ul>
             <p>
               We will respond within a reasonable timeframe and, in all cases, within a maximum of
