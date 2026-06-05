@@ -2,6 +2,27 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+
+const IconArrow = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="5" y1="12" x2="19" y2="12" />
+    <polyline points="12 5 19 12 12 19" />
+  </svg>
+);
+
+const IconLock = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+  </svg>
+);
+
+const IconShield = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+  </svg>
+);
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -25,106 +46,82 @@ export default function LoginPage() {
       if (res.ok) {
         router.push('/admin/dashboard');
       } else {
-        setError('Acces refuse. Informations incorrectes.');
+        setError('Access denied. Invalid credentials.');
       }
     } catch {
-      setError('Une erreur est survenue.');
+      setError('Something went wrong.');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="login-container">
-      <form onSubmit={handleSubmit} className="glass-card login-form">
-        <div className="brand-line">
-          <span className="brand">DraykoRedirect</span>
-          <span className="brand-pill">Admin</span>
+    <div className="auth-screen">
+      <div className="auth-card">
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
+          <Link href="/" className="brand">
+            <span className="brand-mark">D</span>
+            <span>Drayko</span>
+          </Link>
+          <span className="brand-pill">
+            <IconShield />
+            Admin
+          </span>
         </div>
 
-        <h1>Connexion administrateur</h1>
-
-        {error && <p className="error">{error}</p>}
-
-        <div className="input-group">
-          <label>Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            placeholder="admin@example.com"
-          />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
+          <IconLock />
+          <span style={{ fontSize: '0.78rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-muted)' }}>
+            Authentication
+          </span>
         </div>
 
-        <div className="input-group">
-          <label>Mot de passe</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            placeholder="********"
-          />
+        <h1 className="auth-title">Admin sign-in</h1>
+        <p className="auth-subtitle">Access the administration panel to manage the service.</p>
+
+        {error && (
+          <div className="alert alert-error" style={{ marginBottom: '1.25rem' }}>
+            <span>⚠</span> {error}
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit}>
+          <div className="form-field">
+            <label className="form-label" htmlFor="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              placeholder="admin@example.com"
+            />
+          </div>
+
+          <div className="form-field">
+            <label className="form-label" htmlFor="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              placeholder="••••••••"
+            />
+          </div>
+
+          <button type="submit" disabled={loading} className="btn btn-gradient" style={{ width: '100%', marginTop: '0.5rem' }}>
+            {loading ? 'Signing in...' : 'Sign in'}
+            {!loading && <IconArrow />}
+          </button>
+        </form>
+
+        <div style={{ marginTop: '1.5rem', paddingTop: '1.25rem', borderTop: '1px solid var(--line)', textAlign: 'center' }}>
+          <Link href="/" style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+            ← Back to home
+          </Link>
         </div>
-
-        <button type="submit" disabled={loading} className="btn btn-primary full-btn">
-          {loading ? 'Connexion...' : 'Se connecter'}
-        </button>
-      </form>
-
-      <style jsx>{`
-        .login-container {
-          display: grid;
-          place-items: center;
-          padding: 1.2rem;
-        }
-
-        .login-form {
-          width: 100%;
-          max-width: 420px;
-          padding: 1.25rem;
-        }
-
-        .brand-line {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          margin-bottom: 0.95rem;
-        }
-
-        h1 {
-          font-size: 1.2rem;
-          margin-bottom: 1rem;
-        }
-
-        .input-group {
-          margin-bottom: 0.8rem;
-        }
-
-        label {
-          display: block;
-          font-size: 0.84rem;
-          color: var(--text-muted);
-          margin-bottom: 0.4rem;
-        }
-
-        .error {
-          border: 1px solid rgba(220, 38, 38, 0.2);
-          background: #fef2f2;
-          color: var(--danger);
-          border-radius: 10px;
-          padding: 0.55rem 0.7rem;
-          margin-bottom: 0.8rem;
-          font-size: 0.84rem;
-        }
-
-        .full-btn {
-          margin-top: 0.2rem;
-          width: 100%;
-        }
-      `}</style>
+      </div>
     </div>
   );
 }
-

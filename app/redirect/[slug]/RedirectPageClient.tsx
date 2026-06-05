@@ -4,6 +4,21 @@ import { useEffect, useState } from 'react';
 
 type RedirectEventStatus = 'completed' | 'abandoned';
 
+const IconShield = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+    <polyline points="9 12 11 14 15 10" />
+  </svg>
+);
+
+const IconExternal = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+    <polyline points="15 3 21 3 21 9" />
+    <line x1="10" y1="14" x2="21" y2="2" />
+  </svg>
+);
+
 export default function RedirectPageClient({ url, eventToken }: { url: string; eventToken: string }) {
   const [countdown, setCountdown] = useState(5);
 
@@ -61,79 +76,39 @@ export default function RedirectPageClient({ url, eventToken }: { url: string; e
   }, [countdown, eventToken, url]);
 
   return (
-    <main className="redirect-interpage">
-      <section className="glass-card redirect-card">
-        <div className="loader" />
-        <h1>Redirection en cours</h1>
-        <p>
-          Vous serez redirige dans <strong>{countdown}</strong> seconde{countdown > 1 ? 's' : ''}.
+    <div className="redirect-interpage">
+      <div className="redirect-card">
+        <div className="redirect-count">{countdown}</div>
+        <h1 style={{ fontSize: '1.4rem', fontFamily: 'Manrope, sans-serif', fontWeight: 800, letterSpacing: '-0.02em' }}>
+          Redirecting…
+        </h1>
+        <p style={{ color: 'var(--text-muted)', marginTop: '0.5rem', fontSize: '0.95rem' }}>
+          You will be redirected in <strong style={{ color: 'var(--brand)' }}>{countdown}</strong> second{countdown > 1 ? 's' : ''}.
         </p>
-        <div className="target-box">{url}</div>
-        <p className="footer-note">
-          Propulse par <strong>DraykoRedirect</strong>
+
+        <div className="redirect-target">
+          <span style={{ color: 'var(--text-faint)', fontSize: '0.74rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '0.4rem', fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+            Destination
+          </span>
+          {url}
+        </div>
+
+        <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', marginTop: '1.5rem' }}>
+          <a
+            href={url}
+            className="btn btn-primary btn-sm"
+            rel="noreferrer noopener"
+          >
+            <IconExternal />
+            Open now
+          </a>
+        </div>
+
+        <p style={{ marginTop: '1.5rem', fontSize: '0.82rem', color: 'var(--text-faint)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}>
+          <IconShield />
+          Powered by <strong style={{ color: 'var(--text-secondary)', fontWeight: 700 }}>DraykoRedirect</strong>
         </p>
-      </section>
-
-      <style jsx>{`
-        .redirect-interpage {
-          display: grid;
-          place-items: center;
-          padding: 1rem;
-        }
-
-        .redirect-card {
-          width: 100%;
-          max-width: 520px;
-          padding: 1.4rem;
-          text-align: center;
-        }
-
-        .loader {
-          width: 42px;
-          height: 42px;
-          border: 3px solid #dbe4ef;
-          border-top-color: var(--brand);
-          border-radius: 50%;
-          margin: 0 auto 0.9rem;
-          animation: spin 0.9s linear infinite;
-        }
-
-        h1 {
-          font-size: 1.2rem;
-          margin-bottom: 0.45rem;
-        }
-
-        p {
-          font-size: 0.95rem;
-        }
-
-        strong {
-          color: #1e40af;
-        }
-
-        .target-box {
-          margin-top: 0.9rem;
-          border: 1px solid var(--line);
-          border-radius: 10px;
-          background: #fbfdff;
-          padding: 0.65rem;
-          color: var(--text-muted);
-          font-size: 0.82rem;
-          word-break: break-all;
-        }
-
-        .footer-note {
-          margin-top: 1rem;
-          font-size: 0.82rem;
-          color: var(--text-muted);
-        }
-
-        @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-      `}</style>
-    </main>
+      </div>
+    </div>
   );
 }
-

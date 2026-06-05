@@ -1,6 +1,6 @@
 'use server';
 
-import sql from './db';
+import sql, { initDb } from './db';
 import { isAdmin } from './auth';
 import { revalidatePath } from 'next/cache';
 import { nanoid } from 'nanoid';

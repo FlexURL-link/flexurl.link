@@ -3,6 +3,22 @@
 import { useState } from 'react';
 import { createRedirect, deleteRedirect } from '@/lib/actions';
 
+const IconLink = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></svg>
+);
+const IconPlus = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+);
+const IconCopy = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg>
+);
+const IconTrash = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6" /><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6" /><path d="M10 11v6" /><path d="M14 11v6" /><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg>
+);
+const IconLinkBig = () => (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></svg>
+);
+
 export default function DashboardClient({ initialRedirects }: { initialRedirects: any[] }) {
   const [url, setUrl] = useState('');
   const [customId, setCustomId] = useState('');
@@ -24,20 +40,20 @@ export default function DashboardClient({ initialRedirects }: { initialRedirects
         window.location.reload();
       }
     } catch {
-      setError('Une erreur est survenue.');
+      setError('Something went wrong.');
     } finally {
       setLoading(false);
     }
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm('Voulez-vous vraiment supprimer ce lien ?')) return;
+    if (!confirm('Are you sure you want to delete this link?')) return;
 
     try {
       await deleteRedirect(id);
       window.location.reload();
     } catch {
-      alert('Erreur lors de la suppression.');
+      alert('Error while deleting.');
     }
   };
 
@@ -45,192 +61,130 @@ export default function DashboardClient({ initialRedirects }: { initialRedirects
     const fullUrl = `${window.location.origin}/redirect/${id}`;
     try {
       await navigator.clipboard.writeText(fullUrl);
-      alert('Lien copie dans le presse-papier.');
+      alert('Link copied to clipboard.');
     } catch {
-      alert(`Impossible de copier automatiquement. Lien: ${fullUrl}`);
+      alert(`Could not copy automatically. Link: ${fullUrl}`);
     }
   };
 
   return (
-    <div className="admin-grid">
-      <section className="glass-card section-card">
-        <h2>Creer un nouveau lien</h2>
-        <form onSubmit={handleCreate} className="stack-form">
+    <div className="dash-grid">
+      {/* === CREATE LINK === */}
+      <article className="panel">
+        <div className="panel-header">
           <div>
-            <label>URL de destination</label>
-            <input
-              type="url"
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-              required
-              placeholder="https://example.com"
-            />
+            <h2 className="panel-title">
+              <span className="stat-card-icon indigo" style={{ width: 28, height: 28, borderRadius: 8 }}><IconPlus /></span>
+              Create a link
+            </h2>
+            <p className="panel-title-sub">Generate a new redirect</p>
           </div>
+        </div>
+        <div className="panel-body">
+          <form onSubmit={handleCreate}>
+            <div className="form-field">
+              <label className="form-label" htmlFor="url">Destination URL</label>
+              <input
+                id="url"
+                type="url"
+                value={url}
+                onChange={(e) => setUrl(e.target.value)}
+                required
+                placeholder="https://example.com"
+              />
+            </div>
+
+            <div className="form-field">
+              <label className="form-label" htmlFor="slug">Custom slug <span className="form-hint">(optional)</span></label>
+              <div className="input-group">
+                <span className="input-group-prefix">drayko.xyz/</span>
+                <input
+                  id="slug"
+                  type="text"
+                  value={customId}
+                  onChange={(e) => setCustomId(e.target.value)}
+                  placeholder="my-link"
+                  style={{ border: 0, boxShadow: 'none' }}
+                />
+              </div>
+              <span className="form-hint">Leave empty to auto-generate an identifier.</span>
+            </div>
+
+            {error && (
+              <div className="alert alert-error" style={{ marginBottom: '1rem' }}>
+                <span>⚠</span> {error}
+              </div>
+            )}
+
+            <button type="submit" disabled={loading} className="btn btn-gradient" style={{ width: '100%' }}>
+              {loading ? 'Creating...' : 'Generate link'}
+            </button>
+          </form>
+        </div>
+      </article>
+
+      {/* === LIST === */}
+      <article className="panel">
+        <div className="panel-header">
           <div>
-            <label>Slug personnalise (optionnel)</label>
-            <input
-              type="text"
-              value={customId}
-              onChange={(e) => setCustomId(e.target.value)}
-              placeholder="mon-lien"
-            />
-            <p className="hint">Laissez vide pour un id automatique.</p>
+            <h2 className="panel-title">
+              <span className="stat-card-icon cyan" style={{ width: 28, height: 28, borderRadius: 8 }}><IconLink /></span>
+              Links list
+            </h2>
+            <p className="panel-title-sub">{initialRedirects.length} redirect{initialRedirects.length !== 1 ? 's' : ''} saved</p>
           </div>
+        </div>
 
-          {error && <p className="error">{error}</p>}
-
-          <button type="submit" disabled={loading} className="btn btn-primary full-btn">
-            {loading ? 'Creation...' : 'Generer le lien'}
-          </button>
-        </form>
-      </section>
-
-      <section className="glass-card section-card">
-        <h2>Liste des liens</h2>
         {initialRedirects.length === 0 ? (
-          <p className="empty">Aucun lien cree pour le moment.</p>
+          <div className="panel-body">
+            <div className="empty-state">
+              <div className="empty-state-icon"><IconLinkBig /></div>
+              <div className="empty-state-title">No link created yet</div>
+              <div className="empty-state-text">Use the form to create your first redirect.</div>
+            </div>
+          </div>
         ) : (
-          <div className="redirects-list">
+          <div className="link-list">
             {initialRedirects.map((r) => (
-              <article key={r.id} className="row">
-                <div className="info">
-                  <p className="slug">/redirect/{r.id}</p>
-                  <p className="dest" title={r.url}>
-                    {r.url}
-                  </p>
+              <div key={r.id} className="link-row">
+                <div className="link-row-main">
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+                    <span className="link-slug">/redirect/{r.id}</span>
+                    <span className="click-badge">{r.clicks} clicks</span>
+                  </div>
+                  <span className="link-url" title={r.url}>{r.url}</span>
                 </div>
-                <div className="row-actions">
-                  <span className="clicks">{r.clicks} clics</span>
-                  <button onClick={() => copyToClipboard(r.id)} className="btn btn-soft mini" type="button">
-                    Copier
+                <div className="link-row-actions">
+                  <button onClick={() => copyToClipboard(r.id)} className="btn btn-soft btn-sm" type="button">
+                    <IconCopy /> Copy
                   </button>
-                  <button onClick={() => handleDelete(r.id)} className="btn btn-danger mini" type="button">
-                    Supprimer
+                  <button onClick={() => handleDelete(r.id)} className="btn btn-danger btn-sm" type="button">
+                    <IconTrash /> Delete
                   </button>
                 </div>
-              </article>
+              </div>
             ))}
           </div>
         )}
-      </section>
+      </article>
 
       <style jsx>{`
-        .admin-grid {
+        .dash-grid {
           display: grid;
-          grid-template-columns: 340px 1fr;
-          gap: 1rem;
+          grid-template-columns: 380px 1fr;
+          gap: 1.25rem;
+          align-items: start;
         }
 
-        h2 {
-          font-size: 1.12rem;
+        @media (max-width: 1100px) {
+          .dash-grid { grid-template-columns: 1fr; }
         }
 
-        label {
-          display: block;
-          color: var(--text-muted);
-          font-size: 0.84rem;
-          margin-bottom: 0.4rem;
-        }
-
-        .stack-form {
-          margin-top: 0.8rem;
-          display: flex;
-          flex-direction: column;
-          gap: 0.82rem;
-        }
-
-        .hint {
-          margin-top: 0.26rem;
-          font-size: 0.75rem;
-        }
-
-        .error {
-          color: var(--danger);
-          font-size: 0.85rem;
-        }
-
-        .full-btn {
-          width: 100%;
-        }
-
-        .redirects-list {
-          margin-top: 0.9rem;
-          display: flex;
-          flex-direction: column;
-          gap: 0.55rem;
-          max-height: 760px;
+        .link-list {
+          max-height: 720px;
           overflow-y: auto;
-        }
-
-        .row {
-          display: flex;
-          justify-content: space-between;
-          gap: 0.7rem;
-          border: 1px solid var(--line);
-          border-radius: 12px;
-          padding: 0.8rem;
-          background: #fbfdff;
-          flex-wrap: wrap;
-        }
-
-        .info {
-          min-width: 0;
-          flex: 1;
-        }
-
-        .slug {
-          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-          color: #1e40af;
-          font-weight: 700;
-          font-size: 0.9rem;
-        }
-
-        .dest {
-          margin-top: 0.2rem;
-          font-size: 0.83rem;
-          color: var(--text-muted);
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          overflow: hidden;
-        }
-
-        .row-actions {
-          display: flex;
-          align-items: center;
-          gap: 0.35rem;
-          flex-wrap: wrap;
-        }
-
-        .mini {
-          padding: 0.4rem 0.7rem;
-          font-size: 0.78rem;
-        }
-
-        .clicks {
-          padding: 0.22rem 0.54rem;
-          border-radius: 999px;
-          background: #eef2ff;
-          color: #3730a3;
-          font-size: 0.75rem;
-          font-weight: 700;
-        }
-
-        .empty {
-          margin-top: 1rem;
-          text-align: center;
-          border: 1px dashed var(--line-strong);
-          border-radius: 12px;
-          background: #fbfdff;
-          padding: 2rem 1rem;
-        }
-
-        @media (max-width: 980px) {
-          .admin-grid {
-            grid-template-columns: 1fr;
-          }
         }
       `}</style>
     </div>
   );
 }
-

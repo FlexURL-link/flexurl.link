@@ -3,8 +3,8 @@ import { ClerkProvider } from '@clerk/nextjs'
 import './globals.css'
 
 export const metadata: Metadata = {
-    title: 'DraykoRedirect | Redirection URL Moderne & Analytique',
-    description: 'Transformez vos liens longs en URLs courtes, mémorables et suivez vos performances en temps réel avec DraykoRedirect.',
+    title: 'DraykoRedirect | Modern URL Redirection & Analytics',
+    description: 'Transform your long links into short, memorable URLs and track your performance in real time with DraykoRedirect.',
 }
 
 export default function RootLayout({
@@ -13,7 +13,7 @@ export default function RootLayout({
     children: React.ReactNode
 }) {
     return (
-        <html lang="fr">
+        <html lang="en">
             <body>
                 <ClerkProvider>{children}</ClerkProvider>
             </body>

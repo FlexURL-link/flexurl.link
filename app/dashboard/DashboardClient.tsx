@@ -44,8 +44,48 @@ interface DashboardStats {
   }>;
 }
 
+const IconChart = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 3v18h18" /><path d="m19 9-5 5-4-4-3 3" /></svg>
+);
+const IconLink = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></svg>
+);
+const IconTrending = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17" /><polyline points="16 7 22 7 22 13" /></svg>
+);
+const IconTarget = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></svg>
+);
+const IconPlus = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+);
+const IconCopy = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg>
+);
+const IconEdit = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" /><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
+);
+const IconTrash = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6" /><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6" /><path d="M10 11v6" /><path d="M14 11v6" /><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg>
+);
+const IconQR = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /><path d="M14 14h3v3h-3zM19 14h2v2h-2zM14 19h2v2h-2zM19 19h2v2h-2z" /></svg>
+);
+const IconBarChart = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="20" x2="12" y2="10" /><line x1="18" y1="20" x2="18" y2="4" /><line x1="6" y1="20" x2="6" y2="16" /></svg>
+);
+const IconExternal = () => (
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
+);
+const IconCheck = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+);
+const IconLinkBig = () => (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></svg>
+);
+
 function formatDayLabel(date: string) {
-  return new Date(date).toLocaleDateString('fr-FR', { weekday: 'short' });
+  return new Date(date).toLocaleDateString('en-US', { weekday: 'short' });
 }
 
 function formatRelativeDate(date: string) {
@@ -55,19 +95,19 @@ function formatRelativeDate(date: string) {
   const hour = Math.floor(min / 60);
   const day = Math.floor(hour / 24);
 
-  if (min < 1) return 'a l\'instant';
-  if (min < 60) return `il y a ${min} min`;
-  if (hour < 24) return `il y a ${hour} h`;
-  return `il y a ${day} j`;
+  if (min < 1) return 'just now';
+  if (min < 60) return `${min} min ago`;
+  if (hour < 24) return `${hour} h ago`;
+  return `${day} d ago`;
 }
 
 function formatSourceLabel(source: string | null) {
   if (!source || source === 'unknown') return 'direct';
   if (source === 'direct') return 'direct';
-  if (source === 'internal') return 'interne';
+  if (source === 'internal') return 'internal';
   if (source === 'social') return 'social';
   if (source === 'search') return 'search';
-  if (source === 'referral') return 'site externe';
+  if (source === 'referral') return 'external site';
   return source;
 }
 
@@ -85,6 +125,12 @@ export default function DashboardClient({
   const [error, setError] = useState('');
 
   const maxDailyClicks = Math.max(...initialStats.clicksLast7Days.map((d) => d.clicks), 1);
+  const totalClicks = initialStats.totals.totalClicks;
+  const linksCount = initialStats.totals.links;
+  const avgClicks = initialStats.totals.avgClicksPerLink;
+  const bestLink = initialStats.totals.bestLinkId
+    ? { id: initialStats.totals.bestLinkId, clicks: initialStats.totals.bestLinkClicks }
+    : null;
 
   const handleCreate = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -101,430 +147,356 @@ export default function DashboardClient({
         window.location.reload();
       }
     } catch {
-      setError('Une erreur est survenue.');
+      setError('Something went wrong.');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="dash-layout">
-      <div className="view-switch-wrap">
-        <div className="view-switch" role="tablist" aria-label="Selection de la vue dashboard">
+    <div className="dash-stack">
+      {/* === STATS OVERVIEW === */}
+      <div className="stat-grid">
+        <div className="stat-card animate-in">
+          <div className="stat-card-label">
+            <span>Total clicks</span>
+            <div className="stat-card-icon indigo"><IconChart /></div>
+          </div>
+          <div className="stat-card-value">{totalClicks.toLocaleString('en-US')}</div>
+          <div className="stat-card-sub">{initialStats.totals.activeLinks} active links</div>
+        </div>
+
+        <div className="stat-card animate-in delay-1">
+          <div className="stat-card-label">
+            <span>Links created</span>
+            <div className="stat-card-icon cyan"><IconLink /></div>
+          </div>
+          <div className="stat-card-value">{linksCount}</div>
+          <div className="stat-card-sub">Avg. {avgClicks} click / link</div>
+        </div>
+
+        <div className="stat-card animate-in delay-2">
+          <div className="stat-card-label">
+            <span>Top link</span>
+            <div className="stat-card-icon emerald"><IconTrending /></div>
+          </div>
+          <div className="stat-card-value">
+            {bestLink ? bestLink.clicks : '—'}
+          </div>
+          <div className="stat-card-sub">
+            {bestLink ? (
+              <span className="mono" style={{ color: 'var(--brand)' }}>/{bestLink.id}</span>
+            ) : (
+              'None yet'
+            )}
+          </div>
+        </div>
+
+        <div className="stat-card animate-in delay-3">
+          <div className="stat-card-label">
+            <span>Unique sources</span>
+            <div className="stat-card-icon violet"><IconTarget /></div>
+          </div>
+          <div className="stat-card-value">{initialStats.trafficSources.length}</div>
+          <div className="stat-card-sub">traffic origins</div>
+        </div>
+      </div>
+
+      {/* === TABS === */}
+      <div className="tabs-wrap">
+        <div className="tabs" role="tablist" aria-label="Dashboard view selector">
           <button
             type="button"
-            className={`view-pill ${activeView === 'links' ? 'active' : ''}`}
+            className={`tab ${activeView === 'links' ? 'active' : ''}`}
             onClick={() => setActiveView('links')}
             role="tab"
             aria-selected={activeView === 'links'}
           >
-            Liens
+            <IconLink /> Links
           </button>
           <button
             type="button"
-            className={`view-pill ${activeView === 'stats' ? 'active' : ''}`}
+            className={`tab ${activeView === 'stats' ? 'active' : ''}`}
             onClick={() => setActiveView('stats')}
             role="tab"
             aria-selected={activeView === 'stats'}
           >
-            Stats Global
+            <IconBarChart /> Statistics
           </button>
         </div>
       </div>
 
-      {activeView === 'stats' ? (
-        <section className="glass-card section-card">
-        <h2>Apercu global</h2>
-
-        <div className="stats-grid">
-          <article className="stat-card">
-            <p className="stat-label">Total clics</p>
-            <p className="stat-value">{initialStats.totals.totalClicks}</p>
-            <p className="stat-sub">{initialStats.totals.activeLinks} liens actifs</p>
-          </article>
-          <article className="stat-card">
-            <p className="stat-label">Liens crees</p>
-            <p className="stat-value">{initialStats.totals.links}</p>
-            <p className="stat-sub">Moyenne: {initialStats.totals.avgClicksPerLink} clic / lien</p>
-          </article>
-          <article className="stat-card">
-            <p className="stat-label">Meilleur lien</p>
-            <p className="stat-value">{initialStats.totals.bestLinkClicks}</p>
-            <p className="stat-sub">
-              {initialStats.totals.bestLinkId ? `/${initialStats.totals.bestLinkId}` : 'Aucun pour le moment'}
-            </p>
-          </article>
-        </div>
-
-        <div className="analytics-grid">
-          <article className="card-block">
-            <h3>Clics sur 7 jours</h3>
-            {initialStats.clicksLast7Days.length === 0 ? (
-              <p>Pas encore de donnees sur les 7 derniers jours.</p>
-            ) : (
-              <div className="bars-row">
-                {initialStats.clicksLast7Days.map((point) => (
-                  <div key={point.date} className="bar-col">
-                    <div className="bar-wrap">
-                      <div
-                        className="bar"
-                        style={{
-                          height: `${Math.max((point.clicks / maxDailyClicks) * 122, point.clicks > 0 ? 10 : 3)}px`,
-                        }}
-                        title={`${point.clicks} clics`}
-                      />
-                    </div>
-                    <span className="bar-count">{point.clicks}</span>
-                    <span className="bar-label">{formatDayLabel(point.date)}</span>
-                  </div>
-                ))}
+      {activeView === 'links' ? (
+        <div className="dash-grid">
+          {/* === CREATE LINK PANEL === */}
+          <article className="panel" id="new">
+            <div className="panel-header">
+              <div>
+                <h2 className="panel-title">
+                  <span className="stat-card-icon indigo" style={{ width: 28, height: 28, borderRadius: 8 }}><IconPlus /></span>
+                  Create a link
+                </h2>
+                <p className="panel-title-sub">Shorten a URL in seconds</p>
               </div>
-            )}
+            </div>
+            <div className="panel-body">
+              <form onSubmit={handleCreate}>
+                <div className="form-field">
+                  <label className="form-label" htmlFor="url">Destination URL</label>
+                  <input
+                    id="url"
+                    type="url"
+                    value={url}
+                    onChange={(e) => setUrl(e.target.value)}
+                    required
+                    placeholder="https://example.com/my-very-long-article"
+                  />
+                </div>
+
+                <div className="form-field">
+                  <label className="form-label" htmlFor="slug">Custom slug <span className="form-hint">(optional)</span></label>
+                  <div className="input-group">
+                    <span className="input-group-prefix">drayko.xyz/</span>
+                    <input
+                      id="slug"
+                      type="text"
+                      value={customId}
+                      onChange={(e) => setCustomId(e.target.value)}
+                      placeholder="my-campaign"
+                      style={{ border: 0, boxShadow: 'none' }}
+                    />
+                  </div>
+                </div>
+
+                <button type="submit" disabled={loading} className="btn btn-gradient" style={{ width: '100%' }}>
+                  {loading ? 'Creating...' : 'Create link'}
+                </button>
+              </form>
+
+              {error && (
+                <div className="alert alert-error" style={{ marginTop: '1rem' }}>
+                  <span>⚠</span> {error}
+                </div>
+              )}
+            </div>
           </article>
 
-          <article className="card-block">
-            <h3>Activite recente</h3>
-            {initialStats.recentClicks.length === 0 ? (
-              <p>Aucun clic recent.</p>
-            ) : (
-              <div className="activity-list">
-                {initialStats.recentClicks.map((event, index) => (
-                  <div key={`${event.redirect_id}-${event.clicked_at}-${index}`} className="activity-item">
-                    <span className="mono-link">/{event.redirect_id}</span>
-                    <span>
-                      {formatSourceLabel(event.source_type)} · {formatRelativeDate(event.clicked_at)}
-                    </span>
-                  </div>
-                ))}
+          {/* === LINKS LIST === */}
+          <article className="panel">
+            <div className="panel-header">
+              <div>
+                <h2 className="panel-title">
+                  <span className="stat-card-icon cyan" style={{ width: 28, height: 28, borderRadius: 8 }}><IconLink /></span>
+                  Your links
+                </h2>
+                <p className="panel-title-sub">{initialRedirects.length} link{initialRedirects.length !== 1 ? 's' : ''} in total</p>
               </div>
-            )}
-          </article>
-        </div>
+            </div>
 
-        <div className="detail-grid">
-          <article className="card-block">
-            <h3>Top liens</h3>
-            {initialStats.topLinks.length === 0 ? (
-              <p>Aucune performance a afficher.</p>
-            ) : (
-              <div className="list-wrap">
-                {initialStats.topLinks.map((link) => (
-                  <div key={link.id} className="line-row">
-                    <div>
-                      <p className="mono-link" style={{ marginBottom: '0.18rem' }}>
-                        /{link.id}
-                      </p>
-                      <p className="url-sub">{link.url}</p>
-                    </div>
-                    <strong>{link.clicks} clics</strong>
-                  </div>
-                ))}
+            {initialRedirects.length === 0 ? (
+              <div className="panel-body">
+                <div className="empty-state">
+                  <div className="empty-state-icon"><IconLinkBig /></div>
+                  <div className="empty-state-title">No links yet</div>
+                  <div className="empty-state-text">Create your first short link using the form.</div>
+                </div>
               </div>
-            )}
-          </article>
-
-          <article className="card-block">
-            <h3>Origine des clics</h3>
-            {initialStats.trafficSources.length === 0 ? (
-              <p>Pas assez de donnees.</p>
             ) : (
-              <div className="list-wrap">
-                {initialStats.trafficSources.map((row) => (
-                  <div key={row.source} className="line-row">
-                    <span>{formatSourceLabel(row.source)}</span>
-                    <strong>{row.clicks}</strong>
-                  </div>
+              <div className="link-list">
+                {initialRedirects.map((redirect) => (
+                  <RedirectItem key={redirect.id} redirect={redirect} />
                 ))}
               </div>
             )}
           </article>
         </div>
-        </section>
       ) : (
-        <section className="dashboard-grid">
-        <article className="glass-card section-card create-panel">
-          <h2>Creer un nouveau lien</h2>
-          <form onSubmit={handleCreate} className="form-stack">
-            <div>
-              <label className="input-label">Destination URL</label>
-              <input
-                type="url"
-                value={url}
-                onChange={(e) => setUrl(e.target.value)}
-                required
-                placeholder="https://example.com"
-              />
+        <div className="dash-stack">
+          {/* === ACTIVITY CHART === */}
+          <article className="panel">
+            <div className="panel-header">
+              <div>
+                <h2 className="panel-title">Last 7 days activity</h2>
+                <p className="panel-title-sub">Traffic evolution on your links</p>
+              </div>
+              <div className="tag tag-indigo">
+                <IconTrending />
+                {totalClicks} clicks total
+              </div>
             </div>
-            <div>
-              <label className="input-label">Slug personnalise (optionnel)</label>
-              <input
-                type="text"
-                value={customId}
-                onChange={(e) => setCustomId(e.target.value)}
-                placeholder="ex: ma-campagne"
-              />
+            <div className="panel-body">
+              {initialStats.clicksLast7Days.length === 0 ? (
+                <div className="empty-state">
+                  <div className="empty-state-icon"><IconChart /></div>
+                  <div className="empty-state-title">No data yet</div>
+                  <div className="empty-state-text">Your statistics will appear as soon as the first clicks come in.</div>
+                </div>
+              ) : (
+                <div className="bars-row">
+                  {initialStats.clicksLast7Days.map((point) => (
+                    <div key={point.date} className="bar-col">
+                      <div className="bar-wrap">
+                        <div
+                          className="bar"
+                          style={{
+                            height: `${Math.max((point.clicks / maxDailyClicks) * 150, point.clicks > 0 ? 12 : 4)}px`,
+                          }}
+                          title={`${point.clicks} clicks`}
+                        />
+                      </div>
+                      <span className="bar-count">{point.clicks}</span>
+                      <span className="bar-label">{formatDayLabel(point.date)}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
-            <button type="submit" disabled={loading} className="btn btn-primary form-btn">
-              {loading ? 'Creation...' : 'Creer le lien'}
-            </button>
-          </form>
-          {error && <p className="error-msg">{error}</p>}
-        </article>
+          </article>
 
-        <article className="glass-card section-card">
-          <h2>Vos liens actifs</h2>
-          {initialRedirects.length === 0 ? (
-            <div className="empty-state">
-              <p>Aucun lien cree pour le moment.</p>
+          <div className="dash-grid">
+            {/* === TOP LINKS === */}
+            <article className="panel">
+              <div className="panel-header">
+                <h2 className="panel-title">
+                  <span className="stat-card-icon emerald" style={{ width: 28, height: 28, borderRadius: 8 }}><IconTrending /></span>
+                  Top links
+                </h2>
+              </div>
+              <div className="panel-body panel-body-tight">
+                {initialStats.topLinks.length === 0 ? (
+                  <div className="empty-state" style={{ margin: '1rem' }}>
+                    <div className="empty-state-title">No performance to show</div>
+                  </div>
+                ) : (
+                  <div>
+                    {initialStats.topLinks.map((link) => {
+                      const max = Math.max(...initialStats.topLinks.map((l) => l.clicks), 1);
+                      return (
+                        <div key={link.id} className="link-row" style={{ flexDirection: 'column', alignItems: 'stretch', gap: '0.5rem' }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
+                            <div className="link-row-main">
+                              <a href={`/redirect/${link.id}`} target="_blank" rel="noreferrer" className="link-slug">
+                                /{link.id}
+                              </a>
+                              <span className="link-url">{link.url}</span>
+                            </div>
+                            <span className="click-badge">{link.clicks} clicks</span>
+                          </div>
+                          <div className="analytics-bar-wrap" style={{ flex: 'none' }}>
+                            <div className="analytics-bar emerald" style={{ width: `${(link.clicks / max) * 100}%` }} />
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            </article>
+
+            {/* === TRAFFIC SOURCES === */}
+            <article className="panel">
+              <div className="panel-header">
+                <h2 className="panel-title">
+                  <span className="stat-card-icon violet" style={{ width: 28, height: 28, borderRadius: 8 }}><IconTarget /></span>
+                  Traffic sources
+                </h2>
+              </div>
+              <div className="panel-body">
+                {initialStats.trafficSources.length === 0 ? (
+                  <div className="empty-state">
+                    <div className="empty-state-title">No data yet</div>
+                  </div>
+                ) : (
+                  <div className="analytics-list">
+                    {initialStats.trafficSources.map((row) => {
+                      const max = Math.max(...initialStats.trafficSources.map((s) => s.clicks), 1);
+                      return (
+                        <div key={row.source} className="analytics-row">
+                          <div className="analytics-label">
+                            <span className="tag">{formatSourceLabel(row.source)}</span>
+                          </div>
+                          <div className="analytics-bar-wrap">
+                            <div
+                              className={`analytics-bar ${row.source === 'search' ? 'cyan' : row.source === 'social' ? 'violet' : row.source === 'direct' ? 'emerald' : ''}`}
+                              style={{ width: `${(row.clicks / max) * 100}%` }}
+                            />
+                          </div>
+                          <span className="analytics-count">{row.clicks}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            </article>
+          </div>
+
+          {/* === RECENT ACTIVITY === */}
+          <article className="panel">
+            <div className="panel-header">
+              <h2 className="panel-title">
+                <span className="stat-card-icon amber" style={{ width: 28, height: 28, borderRadius: 8 }}><IconChart /></span>
+                Recent activity
+              </h2>
+              <span className="tag">Real-time</span>
             </div>
-          ) : (
-            <div className="redirect-list">
-              {initialRedirects.map((redirect) => (
-                <RedirectItem key={redirect.id} redirect={redirect} />
-              ))}
+            <div className="panel-body panel-body-tight">
+              {initialStats.recentClicks.length === 0 ? (
+                <div className="empty-state" style={{ margin: '1rem' }}>
+                  <div className="empty-state-icon"><IconChart /></div>
+                  <div className="empty-state-title">No recent clicks</div>
+                </div>
+              ) : (
+                <div>
+                  {initialStats.recentClicks.map((event, index) => (
+                    <div key={`${event.redirect_id}-${event.clicked_at}-${index}`} className="link-row">
+                      <div className="link-row-main">
+                        <a href={`/redirect/${event.redirect_id}`} target="_blank" rel="noreferrer" className="link-slug">
+                          /{event.redirect_id}
+                        </a>
+                        {event.referrer_host && (
+                          <span className="link-url">via {event.referrer_host}</span>
+                        )}
+                      </div>
+                      <div className="link-row-actions">
+                        <span className="tag tag-indigo">{formatSourceLabel(event.source_type)}</span>
+                        <span className="click-badge">{formatRelativeDate(event.clicked_at)}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
-          )}
-        </article>
-        </section>
+          </article>
+        </div>
       )}
 
       <style jsx>{`
-        .dash-layout {
+        .dash-stack {
           display: flex;
           flex-direction: column;
-          gap: 1rem;
+          gap: 1.25rem;
         }
 
-        .view-switch-wrap {
-          display: flex;
-          justify-content: center;
-        }
-
-        .view-switch {
-          background: #eef3fb;
-          border: 1px solid var(--line);
-          border-radius: 999px;
-          padding: 0.24rem;
-          display: inline-flex;
-          gap: 0.3rem;
-          width: fit-content;
-          max-width: 100%;
-        }
-
-        .view-pill {
-          border: 0;
-          background: transparent;
-          color: #35506c;
-          font-weight: 700;
-          border-radius: 999px;
-          padding: 0.46rem 1rem;
-          cursor: pointer;
-          transition: background 0.2s ease, color 0.2s ease;
-          white-space: nowrap;
-        }
-
-        .view-pill.active {
-          background: #ffffff;
-          color: #0f172a;
-          box-shadow: 0 1px 2px rgba(15, 23, 42, 0.12);
-        }
-
-        .stats-grid,
-        .analytics-grid,
-        .detail-grid {
-          margin-top: 0.9rem;
+        .dash-grid {
           display: grid;
-          gap: 0.75rem;
-        }
-
-        .stats-grid {
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-
-        .analytics-grid,
-        .detail-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .stat-card,
-        .card-block {
-          border: 1px solid var(--line);
-          border-radius: 12px;
-          background: #fbfdff;
-          padding: 0.9rem;
-        }
-
-        .stat-label {
-          font-size: 0.82rem;
-          color: var(--text-muted);
-          margin-bottom: 0.35rem;
-        }
-
-        .stat-value {
-          font-size: 1.75rem;
-          font-family: 'Manrope', sans-serif;
-          color: #0f172a;
-        }
-
-        .stat-sub {
-          font-size: 0.88rem;
-          color: var(--text-muted);
-          margin-top: 0.45rem;
-        }
-
-        h2 {
-          font-size: 1.18rem;
-        }
-
-        h3 {
-          font-size: 0.95rem;
-          margin-bottom: 0.72rem;
-        }
-
-        .bars-row {
-          display: grid;
-          grid-template-columns: repeat(7, minmax(0, 1fr));
-          gap: 0.45rem;
-          align-items: end;
-          min-height: 150px;
-        }
-
-        .bar-col {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 0.18rem;
-        }
-
-        .bar-wrap {
-          height: 122px;
-          display: flex;
-          align-items: end;
-        }
-
-        .bar {
-          width: 20px;
-          border-radius: 8px 8px 3px 3px;
-          background: linear-gradient(180deg, #60a5fa 0%, #2563eb 100%);
-        }
-
-        .bar-count {
-          font-size: 0.74rem;
-          color: #1f2937;
-        }
-
-        .bar-label {
-          font-size: 0.7rem;
-          text-transform: uppercase;
-          color: var(--text-muted);
-        }
-
-        .activity-list,
-        .list-wrap {
-          display: flex;
-          flex-direction: column;
-          gap: 0.45rem;
-        }
-
-        .activity-item,
-        .line-row {
-          border-bottom: 1px solid var(--line);
-          padding-bottom: 0.45rem;
-          display: flex;
-          justify-content: space-between;
-          gap: 0.65rem;
-          font-size: 0.9rem;
-        }
-
-        .mono-link {
-          color: #1e40af;
-          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-          font-weight: 700;
-        }
-
-        .url-sub {
-          color: var(--text-muted);
-          font-size: 0.82rem;
-          max-width: 420px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-
-        .dashboard-grid {
-          display: grid;
-          grid-template-columns: 340px 1fr;
-          gap: 1rem;
+          grid-template-columns: 380px 1fr;
+          gap: 1.25rem;
           align-items: start;
         }
 
-        .create-panel {
-          position: sticky;
-          top: 92px;
+        @media (max-width: 1100px) {
+          .dash-grid { grid-template-columns: 1fr; }
         }
 
-        .form-stack {
-          margin-top: 0.9rem;
+        .tabs-wrap {
           display: flex;
-          flex-direction: column;
-          gap: 0.88rem;
+          justify-content: flex-start;
         }
 
-        .input-label {
-          display: block;
-          font-size: 0.84rem;
-          color: var(--text-muted);
-          margin-bottom: 0.44rem;
-        }
-
-        .form-btn {
-          margin-top: 0.12rem;
-          width: 100%;
-        }
-
-        .error-msg {
-          color: var(--danger);
-          margin-top: 0.8rem;
-          font-size: 0.86rem;
-        }
-
-        .empty-state {
-          border: 1px dashed var(--line-strong);
-          border-radius: 12px;
-          background: #fbfdff;
-          min-height: 180px;
-          display: grid;
-          place-items: center;
-          margin-top: 0.8rem;
-          text-align: center;
-          padding: 1rem;
-        }
-
-        .redirect-list {
-          margin-top: 0.8rem;
-          max-height: 740px;
+        .link-list {
+          max-height: 720px;
           overflow-y: auto;
-          display: flex;
-          flex-direction: column;
-          gap: 0.65rem;
-        }
-
-        @media (max-width: 1200px) {
-          .stats-grid,
-          .analytics-grid,
-          .detail-grid {
-            grid-template-columns: 1fr;
-          }
-        }
-
-        @media (max-width: 960px) {
-          .dashboard-grid {
-            grid-template-columns: 1fr;
-          }
-
-          .create-panel {
-            position: static;
-          }
         }
       `}</style>
     </div>
@@ -536,14 +508,15 @@ function RedirectItem({ redirect }: { redirect: Redirect }) {
   const [editUrl, setEditUrl] = useState(redirect.url);
   const [showQr, setShowQr] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const handleDelete = async () => {
-    if (!confirm('Voulez-vous vraiment supprimer ce lien ?')) return;
+    if (!confirm('Are you sure you want to delete this link?')) return;
     try {
       await deleteUserRedirect(redirect.id);
       window.location.reload();
     } catch {
-      alert('Erreur lors de la suppression.');
+      alert('Error while deleting.');
     }
   };
 
@@ -554,7 +527,7 @@ function RedirectItem({ redirect }: { redirect: Redirect }) {
       setIsEditing(false);
       window.location.reload();
     } catch {
-      alert('Erreur de sauvegarde');
+      alert('Save failed');
     } finally {
       setIsSaving(false);
     }
@@ -563,173 +536,73 @@ function RedirectItem({ redirect }: { redirect: Redirect }) {
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(`${window.location.origin}/redirect/${redirect.id}`);
-      const btn = document.getElementById(`copy-${redirect.id}`);
-      if (btn) {
-        const original = btn.innerText;
-        btn.innerText = 'Copie';
-        setTimeout(() => (btn.innerText = original), 1500);
-      }
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
     } catch {
-      alert('Erreur copie');
+      alert('Copy failed');
     }
   };
 
   return (
-    <div className="link-card">
-      <div className="top-row">
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <div className="title-row">
-            <a href={`/redirect/${redirect.id}`} target="_blank" className="slug-link" rel="noreferrer">
-              /{redirect.id}
-            </a>
-            <span className="click-pill">{redirect.clicks} clics</span>
-          </div>
-
-          {isEditing ? (
-            <div className="edit-row">
-              <input
-                type="url"
-                value={editUrl}
-                onChange={(e) => setEditUrl(e.target.value)}
-                style={{ flex: 1 }}
-              />
-              <button onClick={handleSave} disabled={isSaving} className="btn btn-primary mini-btn" type="button">
-                OK
-              </button>
-              <button onClick={() => setIsEditing(false)} className="btn btn-soft mini-btn" type="button">
-                Annuler
-              </button>
-            </div>
-          ) : (
-            <div className="url-line">
-              <span>{redirect.url}</span>
-            </div>
-          )}
-        </div>
-
-        <div className="action-row">
-          <button onClick={() => setIsEditing(true)} className="btn btn-soft mini-btn" type="button">
-            Modifier
-          </button>
-          <button id={`copy-${redirect.id}`} onClick={copyToClipboard} className="btn btn-soft mini-btn" type="button">
-            Copier
-          </button>
-          <a href={`/dashboard/link/${redirect.id}`} className="btn btn-soft mini-btn">
-            Stats
+    <div className="link-row">
+      <div className="link-row-main">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+          <a href={`/redirect/${redirect.id}`} target="_blank" rel="noreferrer" className="link-slug">
+            /{redirect.id} <IconExternal />
           </a>
-          <button onClick={() => setShowQr((prev) => !prev)} className="btn btn-soft mini-btn" type="button">
-            QR
-          </button>
-          <button onClick={handleDelete} className="btn btn-danger mini-btn" type="button">
-            Supprimer
-          </button>
+          <span className="click-badge">{redirect.clicks} clicks</span>
         </div>
-      </div>
 
-      {showQr && (
-        <div className="expand-block">
-          <p className="expand-label">QR du lien</p>
-          <div className="qr-wrap">
+        {isEditing ? (
+          <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.5rem', flexWrap: 'wrap' }}>
+            <input
+              type="url"
+              value={editUrl}
+              onChange={(e) => setEditUrl(e.target.value)}
+              style={{ flex: 1, minWidth: 200 }}
+              autoFocus
+            />
+            <button onClick={handleSave} disabled={isSaving} className="btn btn-primary btn-sm" type="button">
+              <IconCheck /> OK
+            </button>
+            <button onClick={() => setIsEditing(false)} className="btn btn-soft btn-sm" type="button">
+              Cancel
+            </button>
+          </div>
+        ) : (
+          <span className="link-url">{redirect.url}</span>
+        )}
+
+        {showQr && (
+          <div style={{ marginTop: '0.85rem', display: 'inline-block', padding: '0.65rem', background: '#fff', border: '1px solid var(--line)', borderRadius: 12 }}>
             <img
-              src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(
+              src={`https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${encodeURIComponent(
                 `${typeof window !== 'undefined' ? window.location.origin : ''}/redirect/${redirect.id}`,
               )}`}
               alt="QR Code"
               style={{ display: 'block' }}
             />
           </div>
-        </div>
-      )}
-      <style jsx>{`
-        .link-card {
-          border: 1px solid var(--line);
-          border-radius: 12px;
-          background: #fbfdff;
-          padding: 0.88rem;
-        }
+        )}
+      </div>
 
-        .top-row {
-          display: flex;
-          justify-content: space-between;
-          gap: 0.8rem;
-          flex-wrap: wrap;
-        }
-
-        .title-row {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-        }
-
-        .slug-link {
-          color: #1e40af;
-          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-          font-weight: 700;
-        }
-
-        .click-pill {
-          border-radius: 999px;
-          background: #edf2f7;
-          color: #405266;
-          padding: 0.2rem 0.52rem;
-          font-size: 0.76rem;
-          font-weight: 600;
-        }
-
-        .url-line {
-          margin-top: 0.45rem;
-          display: flex;
-          gap: 0.5rem;
-          align-items: flex-start;
-        }
-
-        .url-line span {
-          color: var(--text-muted);
-          font-size: 0.9rem;
-          word-break: break-all;
-          flex: 1;
-        }
-
-        .edit-row {
-          margin-top: 0.45rem;
-          display: flex;
-          gap: 0.45rem;
-          flex-wrap: wrap;
-        }
-
-        .action-row {
-          display: flex;
-          gap: 0.35rem;
-          flex-wrap: wrap;
-          align-items: center;
-        }
-
-        .mini-btn {
-          padding: 0.42rem 0.75rem;
-          font-size: 0.78rem;
-        }
-
-        .expand-block {
-          margin-top: 0.8rem;
-          border-top: 1px solid var(--line);
-          padding-top: 0.8rem;
-        }
-
-        .expand-label {
-          margin-bottom: 0.55rem;
-          font-size: 0.82rem;
-        }
-
-        .qr-wrap {
-          display: inline-block;
-          background: #fff;
-          border: 1px solid var(--line);
-          border-radius: 10px;
-          padding: 0.5rem;
-        }
-
-      `}</style>
+      <div className="link-row-actions">
+        <button onClick={copyToClipboard} className="btn btn-soft btn-sm" type="button" title="Copy link">
+          {copied ? <><IconCheck /> Copied</> : <><IconCopy /> Copy</>}
+        </button>
+        <a href={`/dashboard/link/${redirect.id}`} className="btn btn-soft btn-sm" title="View stats">
+          <IconBarChart /> Stats
+        </a>
+        <button onClick={() => setShowQr((prev) => !prev)} className="btn btn-soft btn-sm" type="button" title="QR Code">
+          <IconQR /> QR
+        </button>
+        <button onClick={() => setIsEditing(true)} className="btn btn-soft btn-sm" type="button" title="Edit">
+          <IconEdit /> Edit
+        </button>
+        <button onClick={handleDelete} className="btn btn-danger btn-sm" type="button" title="Delete">
+          <IconTrash /> Delete
+        </button>
+      </div>
     </div>
   );
 }
-
