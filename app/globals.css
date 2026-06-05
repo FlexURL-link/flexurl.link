@@ -549,7 +549,7 @@ code,
   border-top: 1px solid var(--line);
   background: var(--bg-page);
   padding: 4rem 0 2.5rem;
-  margin-top: 6rem;
+  margin-top: 0;
 }
 
 .footer-grid {
