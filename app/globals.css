@@ -500,10 +500,17 @@ code,
   right: 0;
   z-index: 50;
   border-bottom: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 0 1px rgba(255, 255, 255, 0.8);
+  background: transparent;
+}
+
+.landing-nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  z-index: -1;
 }
 
 .landing-nav-inner {
