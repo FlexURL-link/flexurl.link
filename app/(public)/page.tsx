@@ -173,19 +173,19 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="section-darker">
-        {/* STATS BAR */}
-        <section id="stats" className="container stats-section">
-          <div className="stats-bar">
-            {stats.map((stat, i) => (
-              <div key={stat.label} className={`stats-item animate-in delay-${i + 1}`}>
-                <div className="stats-value">{stat.value}</div>
-                <div className="stats-label">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </section>
+      {/* STATS BAR */}
+      <section id="stats" className="container stats-section">
+        <div className="stats-bar">
+          {stats.map((stat, i) => (
+            <div key={stat.label} className={`stats-item animate-in delay-${i + 1}`}>
+              <div className="stats-value">{stat.value}</div>
+              <div className="stats-label">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </section>
 
+      <div className="section-darker">
         {/* FEATURES BENTO */}
         <section id="features" className="container section-space">
         <div className="section-head">
