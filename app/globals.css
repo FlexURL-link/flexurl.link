@@ -500,9 +500,17 @@ code,
   right: 0;
   z-index: 50;
   border-bottom: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.5);
+  background: transparent;
+}
+
+.landing-nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  z-index: -1;
 }
 
 .landing-nav-inner {
@@ -511,6 +519,8 @@ code,
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  position: relative;
+  z-index: 1;
 }
 
 .nav-links {
