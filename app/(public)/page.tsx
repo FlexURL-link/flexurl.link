@@ -202,50 +202,14 @@ export default function Home() {
               <p>Track every click with surgical precision: origin, devices, browsers, sources and trends.</p>
             </div>
             <div className="bento-visual">
-              <div className="chart-card">
-                <div className="mini-line-chart" aria-hidden="true">
-                  <svg viewBox="0 0 560 140" preserveAspectRatio="none" style={{ width: '100%', height: '140px' }}>
-                    <defs>
-                      <linearGradient id="greenGradient" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#10b981" stopOpacity="0.3" />
-                        <stop offset="100%" stopColor="#10b981" stopOpacity="0" />
-                      </linearGradient>
-                      <linearGradient id="redGradient" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#ef4444" stopOpacity="0.3" />
-                        <stop offset="100%" stopColor="#ef4444" stopOpacity="0" />
-                      </linearGradient>
-                    </defs>
-                    <path
-                      d="M30,105 C85,85 140,90 195,55 C250,20 305,25 360,20 C415,15 470,30 530,35"
-                      stroke="#10b981"
-                      strokeWidth="2.5"
-                      fill="url(#greenGradient)"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeDasharray="none"
-                    />
-                    <path
-                      d="M30,120 C85,95 140,75 195,55 C250,35 305,35 360,30 C415,25 470,40 530,90"
-                      stroke="#ef4444"
-                      strokeWidth="2.5"
-                      fill="url(#redGradient)"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeDasharray="none"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <div className="chart-card">
-                <div className="mini-chart">
-                  <div className="mini-bar" style={{ height: '40%' }} />
-                  <div className="mini-bar" style={{ height: '70%' }} />
-                  <div className="mini-bar" style={{ height: '55%' }} />
-                  <div className="mini-bar highlight" style={{ height: '92%' }} />
-                  <div className="mini-bar" style={{ height: '65%' }} />
-                  <div className="mini-bar" style={{ height: '80%' }} />
-                  <div className="mini-bar" style={{ height: '50%' }} />
-                </div>
+              <div className="mini-chart">
+                <div className="mini-bar" style={{ height: '40%' }} />
+                <div className="mini-bar" style={{ height: '70%' }} />
+                <div className="mini-bar" style={{ height: '55%' }} />
+                <div className="mini-bar highlight" style={{ height: '92%' }} />
+                <div className="mini-bar" style={{ height: '65%' }} />
+                <div className="mini-bar" style={{ height: '80%' }} />
+                <div className="mini-bar" style={{ height: '50%' }} />
               </div>
             </div>
           </article>
@@ -880,23 +844,6 @@ export default function Home() {
           display: flex;
           flex-direction: column;
           gap: 0.75rem;
-        }
-
-        .chart-card {
-          background: var(--bg-surface);
-          border: 1px solid var(--line);
-          border-radius: var(--radius);
-          padding: 1rem;
-        }
-
-        .mini-line-chart {
-          min-height: 100px;
-        }
-
-        .mini-line-chart svg {
-          display: block;
-          width: 100%;
-          height: 100%;
         }
 
         .mini-chart {
