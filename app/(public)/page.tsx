@@ -1114,7 +1114,8 @@ export default function Home() {
         .section-darker {
           width: 100%;
           background: var(--bg-muted);
-          padding: 2rem 0;
+          padding: 3rem 0;
+          margin-top: 3rem;
         }
         .section-default {
           width: 100%;
