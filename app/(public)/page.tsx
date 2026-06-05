@@ -173,20 +173,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* STATS BAR */}
-      <section id="stats" className="container stats-section">
-        <div className="stats-bar">
-          {stats.map((stat, i) => (
-            <div key={stat.label} className={`stats-item animate-in delay-${i + 1}`}>
-              <div className="stats-value">{stat.value}</div>
-              <div className="stats-label">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <div className="section-darker">
+        {/* STATS BAR */}
+        <section id="stats" className="container stats-section">
+          <div className="stats-bar">
+            {stats.map((stat, i) => (
+              <div key={stat.label} className={`stats-item animate-in delay-${i + 1}`}>
+                <div className="stats-value">{stat.value}</div>
+                <div className="stats-label">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </section>
 
-      {/* FEATURES BENTO */}
-      <section id="features" className="container section-space">
+        {/* FEATURES BENTO */}
+        <section id="features" className="container section-space">
         <div className="section-head">
           <span className="eyebrow"><span className="eyebrow-dot" />Features</span>
           <h2>A <span className="gradient-text">complete and modern</span> toolkit</h2>
@@ -264,7 +265,9 @@ export default function Home() {
           </article>
         </div>
       </section>
+      </div>
 
+      <div className="section-default">
       {/* HOW IT WORKS */}
       <section id="how" className="container section-space">
         <div className="section-head">
@@ -320,7 +323,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </div>
 
+      <div className="section-darker">
       {/* CTA */}
       <section className="container section-space">
         <div className="cta animate-in">
@@ -347,6 +352,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </div>
 
       <style jsx>{`
         .hero {
@@ -1098,6 +1104,15 @@ export default function Home() {
         .dec-link span {
           color: #a5b4fc;
           font-weight: 700;
+        }
+
+        /* === Section wrappers === */
+        .section-darker {
+          width: 100%;
+          background: var(--bg-muted);
+        }
+        .section-default {
+          width: 100%;
         }
       `}</style>
     </>
