@@ -2,8 +2,31 @@ import Link from 'next/link';
 
 export function PublicNav() {
   return (
-    <nav className="landing-nav">
-      <div className="container landing-nav-inner">
+    <header
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 50,
+        height: 'var(--nav-height)',
+        background: 'transparent',
+      }}
+      role="navigation"
+      aria-label="Main navigation"
+    >
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'rgba(255, 255, 255, 0.7)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          borderBottom: '1px solid var(--line)',
+        }}
+        aria-hidden="true"
+      />
+      <div className="container landing-nav-inner" style={{ position: 'relative', zIndex: 1 }}>
         <Link href="/" className="brand">
           <span className="brand-mark">D</span>
           <span>DraykoRedirect</span>
@@ -20,7 +43,7 @@ export function PublicNav() {
           </Link>
         </div>
       </div>
-    </nav>
+    </header>
   );
 }
 
