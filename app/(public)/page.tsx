@@ -1042,6 +1042,10 @@ export default function Home() {
           font-size: clamp(1.75rem, 3.5vw, 2.5rem);
           color: #fafafa;
           margin: 1.25rem 0 0.85rem;
+          background: linear-gradient(180deg, #ffffff 0%, #9ca3af 60%, #6b7280 100%);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
         }
 
         .cta-content p {
