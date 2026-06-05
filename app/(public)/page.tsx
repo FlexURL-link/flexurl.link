@@ -234,7 +234,13 @@ export default function Home() {
             </div>
           </article>
 
-          <article className="bento-card bento-wide animate-in delay-1">
+          <article className="bento-card animate-in delay-3">
+            <div className="bento-icon cyan"><IconQR /></div>
+            <h3>QR Codes</h3>
+            <p>Auto-generated QR codes for every link you create.</p>
+          </article>
+
+          <article className="bento-card bento-wide animate-in delay-4">
             <div className="bento-head">
               <div className="bento-icon violet"><IconLink /></div>
               <h3>Custom slugs</h3>
@@ -250,18 +256,6 @@ export default function Home() {
                 <span className="slug-custom">summer-sale</span>
               </div>
             </div>
-          </article>
-
-          <article className="bento-card animate-in delay-2">
-            <div className="bento-icon cyan"><IconQR /></div>
-            <h3>QR Codes</h3>
-            <p>Auto-generated QR codes for every link you create.</p>
-          </article>
-
-          <article className="bento-card animate-in delay-3">
-            <div className="bento-icon rose"><IconCode /></div>
-            <h3>REST API</h3>
-            <p>Plug DraykoRedirect into your tools and workflows.</p>
           </article>
         </div>
       </section>
