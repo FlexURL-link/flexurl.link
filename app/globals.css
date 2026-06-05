@@ -500,9 +500,9 @@ code,
   right: 0;
   z-index: 50;
   border-bottom: 1px solid var(--line);
-  background: rgba(247, 247, 245, 0.78);
-  backdrop-filter: saturate(180%) blur(14px);
-  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  background: rgba(247, 247, 245, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
 }
 
 .landing-nav-inner {
