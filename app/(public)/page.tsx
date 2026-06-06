@@ -74,10 +74,10 @@ export default function Home() {
             </p>
 
             <div className="hero-actions animate-in delay-4">
-              <Link href="/dashboard" className="btn btn-gradient">
+              <a href="https://portal.flexurl.link" target="_blank" rel="noreferrer" className="btn btn-gradient">
                 Start for free
                 <IconArrow />
-              </Link>
+              </a>
               <Link href="#features" className="btn btn-soft">
                 Discover the tools
               </Link>
@@ -104,7 +104,7 @@ export default function Home() {
                   <span /> <span /> <span />
                 </div>
                 <div className="browser-url">
-                  <span className="lock">🔒</span> flexurl.link/dashboard
+                  <span className="lock">🔒</span> https://portal.flexurl.link
                 </div>
               </div>
 
@@ -327,10 +327,10 @@ export default function Home() {
             <h2>Take your links to the next level.</h2>
             <p>Join thousands of users who trust FlexURL to power their traffic.</p>
             <div className="cta-actions">
-              <Link href="/dashboard" className="btn btn-gradient">
+              <a href="https://portal.flexurl.link" target="_blank" rel="noreferrer" className="btn btn-gradient">
                 Create my first link
                 <IconArrow />
-              </Link>
+              </a>
               <Link href="/#features" className="btn btn-ghost-on-dark">
                 Learn more
               </Link>
