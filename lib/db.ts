@@ -1,7 +1,11 @@
 import { Pool } from 'pg';
 
+const rawUrl = process.env.POSTGRES_URL ?? '';
+const url = new URL(rawUrl);
+url.searchParams.delete('sslmode');
+
 const pool = new Pool({
-    connectionString: process.env.POSTGRES_URL,
+    connectionString: url.toString(),
     ssl: { rejectUnauthorized: false },
 });
 
