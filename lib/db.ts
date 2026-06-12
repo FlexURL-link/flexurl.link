@@ -1,7 +1,7 @@
 import { Pool } from 'pg';
 
 const pool = new Pool({
-    connectionString: process.env.POSTGRES_URL,
+    connectionString: process.env.POSTGRES_URL?.replace(/sslmode=(?:prefer|require|verify-ca)/g, 'sslmode=verify-full'),
 });
 
 function sql(strings: TemplateStringsArray, ...values: unknown[]) {
