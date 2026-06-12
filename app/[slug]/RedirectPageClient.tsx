@@ -78,7 +78,6 @@ export default function RedirectPageClient({ url, eventToken }: { url: string; e
   return (
     <div className="redirect-interpage">
       <div className="redirect-card">
-        <div className="redirect-count">{countdown}</div>
         <h1 style={{ fontSize: '1.4rem', fontFamily: 'Manrope, sans-serif', fontWeight: 800, letterSpacing: '-0.02em' }}>
           Redirecting…
         </h1>
@@ -106,7 +105,7 @@ export default function RedirectPageClient({ url, eventToken }: { url: string; e
 
         <p style={{ marginTop: '1.5rem', fontSize: '0.82rem', color: 'var(--text-faint)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}>
           <IconShield />
-          Powered by <strong style={{ color: 'var(--text-secondary)', fontWeight: 700 }}>FlexURL</strong>
+          Powered by <a href="https://flexurl.link" target="_blank" rel="noreferrer" style={{ color: 'var(--text-secondary)', fontWeight: 700, textDecoration: 'none' }}>FlexURL</a>
         </p>
       </div>
     </div>
