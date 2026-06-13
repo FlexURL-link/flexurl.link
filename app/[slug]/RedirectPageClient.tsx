@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 type RedirectEventStatus = 'completed' | 'abandoned';
 
@@ -21,31 +21,38 @@ const IconExternal = () => (
 
 export default function RedirectPageClient({ url, eventToken }: { url: string; eventToken: string }) {
   const [countdown, setCountdown] = useState(5);
+  const finalEventSentRef = useRef(false);
+  const redirectStartedRef = useRef(false);
+
+  const sendStatus = (status: RedirectEventStatus) => {
+    if (!eventToken) return;
+    if (finalEventSentRef.current) return;
+    finalEventSentRef.current = true;
+
+    const payload = JSON.stringify({ eventToken, status });
+    const blob = new Blob([payload], { type: 'application/json' });
+    const sent = navigator.sendBeacon('/api/redirect-events', blob);
+    if (!sent) {
+      fetch('/api/redirect-events', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: payload,
+        keepalive: true,
+      }).catch(() => {});
+    }
+  };
+
+  const handleOpenNow = () => {
+    redirectStartedRef.current = true;
+    sendStatus('completed');
+    setTimeout(() => {
+      window.location.href = url;
+    }, 100);
+  };
 
   useEffect(() => {
-    let finalEventSent = false;
-    let redirectStarted = false;
-
-    const sendStatus = (status: RedirectEventStatus) => {
-      if (!eventToken) return;
-      if (finalEventSent) return;
-      finalEventSent = true;
-
-      const payload = JSON.stringify({ eventToken, status });
-      const blob = new Blob([payload], { type: 'application/json' });
-      const sent = navigator.sendBeacon('/api/redirect-events', blob);
-      if (!sent) {
-        fetch('/api/redirect-events', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: payload,
-          keepalive: true,
-        }).catch(() => {});
-      }
-    };
-
     const onPageHide = () => {
-      if (!redirectStarted) {
+      if (!redirectStartedRef.current) {
         sendStatus('abandoned');
       }
     };
@@ -53,7 +60,7 @@ export default function RedirectPageClient({ url, eventToken }: { url: string; e
     window.addEventListener('pagehide', onPageHide);
 
     if (countdown <= 0) {
-      redirectStarted = true;
+      redirectStartedRef.current = true;
       sendStatus('completed');
       const timer = setTimeout(() => {
         window.location.href = url;
@@ -93,14 +100,14 @@ export default function RedirectPageClient({ url, eventToken }: { url: string; e
         </div>
 
         <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', marginTop: '1.5rem' }}>
-          <a
-            href={url}
+          <button
+            onClick={handleOpenNow}
             className="btn btn-primary btn-sm"
-            rel="noreferrer noopener"
+            type="button"
           >
             <IconExternal />
             Open now
-          </a>
+          </button>
         </div>
 
         <p style={{ marginTop: '1.5rem', fontSize: '0.82rem', color: 'var(--text-faint)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}>
