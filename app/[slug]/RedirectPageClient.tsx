@@ -4,6 +4,17 @@ import { useEffect, useRef, useState } from 'react';
 
 type RedirectEventStatus = 'completed' | 'abandoned';
 
+interface ClientData {
+  screen_resolution: string;
+  viewport_size: string;
+  timezone: string;
+  connection_type: string;
+  color_scheme: string;
+  device_memory: number | null;
+  hardware_concurrency: number | null;
+  interpage_time_ms: number;
+}
+
 const IconShield = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -19,17 +30,35 @@ const IconExternal = () => (
   </svg>
 );
 
-export default function RedirectPageClient({ url, eventToken }: { url: string; eventToken: string }) {
-  const [countdown, setCountdown] = useState(5);
+function getClientData(): ClientData {
+  const conn = (navigator as any).connection;
+  return {
+    screen_resolution: `${screen.width}x${screen.height}`,
+    viewport_size: `${window.innerWidth}x${window.innerHeight}`,
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    connection_type: conn?.effectiveType || 'unknown',
+    color_scheme: window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
+    device_memory: (navigator as any).deviceMemory ?? null,
+    hardware_concurrency: navigator.hardwareConcurrency ?? null,
+    interpage_time_ms: 0,
+  };
+}
+
+export default function RedirectPageClient({ url, eventToken, countdownSeconds }: { url: string; eventToken: string; countdownSeconds: number }) {
+  const [countdown, setCountdown] = useState(countdownSeconds);
   const finalEventSentRef = useRef(false);
   const redirectStartedRef = useRef(false);
+  const startTimeRef = useRef(Date.now());
+  const clientDataRef = useRef<ClientData>(getClientData());
 
   const sendStatus = (status: RedirectEventStatus) => {
     if (!eventToken) return;
     if (finalEventSentRef.current) return;
     finalEventSentRef.current = true;
 
-    const payload = JSON.stringify({ eventToken, status });
+    clientDataRef.current.interpage_time_ms = Date.now() - startTimeRef.current;
+
+    const payload = JSON.stringify({ eventToken, status, ...clientDataRef.current });
     const blob = new Blob([payload], { type: 'application/json' });
     const sent = navigator.sendBeacon('/api/redirect-events', blob);
     if (!sent) {
@@ -89,7 +118,11 @@ export default function RedirectPageClient({ url, eventToken }: { url: string; e
           Redirecting…
         </h1>
         <p style={{ color: 'var(--text-muted)', marginTop: '0.5rem', fontSize: '0.95rem' }}>
-          You will be redirected in <strong style={{ color: 'var(--brand)' }}>{countdown}</strong> second{countdown > 1 ? 's' : ''}.
+          {countdownSeconds > 0 ? (
+            <>You will be redirected in <strong style={{ color: 'var(--brand)' }}>{countdown}</strong> second{countdown > 1 ? 's' : ''}.</>
+          ) : (
+            <>Click below to proceed to your destination.</>
+          )}
         </p>
 
         <div className="redirect-target">
@@ -106,7 +139,7 @@ export default function RedirectPageClient({ url, eventToken }: { url: string; e
             type="button"
           >
             <IconExternal />
-            Open now
+            {countdownSeconds > 0 ? 'Open now' : 'Go to destination'}
           </button>
         </div>
 

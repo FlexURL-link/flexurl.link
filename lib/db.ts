@@ -74,6 +74,21 @@ export async function initDb() {
         await sql`CREATE INDEX IF NOT EXISTS redirect_click_events_device_type_idx ON redirect_click_events(device_type)`;
         await sql`CREATE INDEX IF NOT EXISTS redirect_click_events_browser_name_idx ON redirect_click_events(browser_name)`;
 
+        await sql`ALTER TABLE redirect_click_events ADD COLUMN IF NOT EXISTS city TEXT`;
+        await sql`ALTER TABLE redirect_click_events ADD COLUMN IF NOT EXISTS region TEXT`;
+        await sql`ALTER TABLE redirect_click_events ADD COLUMN IF NOT EXISTS timezone TEXT`;
+        await sql`ALTER TABLE redirect_click_events ADD COLUMN IF NOT EXISTS screen_resolution TEXT`;
+        await sql`ALTER TABLE redirect_click_events ADD COLUMN IF NOT EXISTS viewport_size TEXT`;
+        await sql`ALTER TABLE redirect_click_events ADD COLUMN IF NOT EXISTS interpage_time_ms INTEGER`;
+        await sql`ALTER TABLE redirect_click_events ADD COLUMN IF NOT EXISTS connection_type TEXT`;
+        await sql`ALTER TABLE redirect_click_events ADD COLUMN IF NOT EXISTS color_scheme TEXT`;
+        await sql`ALTER TABLE redirect_click_events ADD COLUMN IF NOT EXISTS device_memory REAL`;
+        await sql`ALTER TABLE redirect_click_events ADD COLUMN IF NOT EXISTS hardware_concurrency INTEGER`;
+        await sql`ALTER TABLE redirect_click_events ADD COLUMN IF NOT EXISTS is_bot BOOLEAN DEFAULT FALSE`;
+        await sql`ALTER TABLE redirect_click_events ADD COLUMN IF NOT EXISTS referrer_url TEXT`;
+        await sql`ALTER TABLE redirect_click_events ADD COLUMN IF NOT EXISTS asn TEXT`;
+        await sql`ALTER TABLE redirects ADD COLUMN IF NOT EXISTS countdown_seconds INTEGER DEFAULT 5`;
+
         await sql`
       CREATE TABLE IF NOT EXISTS redirect_wait_events (
         id BIGSERIAL PRIMARY KEY,

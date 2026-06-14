@@ -68,6 +68,11 @@ function getSourceType({
     return 'direct';
 }
 
+function isBot(userAgent: string): boolean {
+    const botPattern = /bot|crawler|spider|scraper|crawling|googlebot|bingbot|slurp|duckduckbot|baiduspider|yandexbot|facebookexternalhit|facebot|twitterbot|rogerbot|linkedinbot|embedly|quora|pinterest|slack|vkshare|w3c_validator|whatsapp|telegram|discord|applebot|semrush|ahrefs|dotbot|mj12bot|uptimerobot|pingdom|monitoring/i;
+    return botPattern.test(userAgent);
+}
+
 export default async function RedirectPage({
     params,
 }: {
@@ -75,7 +80,6 @@ export default async function RedirectPage({
 }) {
     const { slug } = await params;
 
-    // List of reserved paths and static file extensions to skip
     const reserved = ['admin', 'api', 'favicon.ico', 'robots.txt', 'sitemap.xml', 'privacy', 'terms'];
     if (!slug || reserved.includes(slug) || slug.includes('.')) {
         return notFound();
@@ -90,6 +94,9 @@ export default async function RedirectPage({
         const currentHost = headerStore.get('host');
         const userAgent = headerStore.get('user-agent') || '';
         const countryCode = headerStore.get('x-vercel-ip-country') || headerStore.get('cf-ipcountry');
+        const city = headerStore.get('x-vercel-ip-city');
+        const region = headerStore.get('x-vercel-ip-country-region');
+        const asn = headerStore.get('x-vercel-ip-as-number');
         const ipAddress = headerStore.get('x-forwarded-for')?.split(',')[0] || headerStore.get('x-real-ip');
         const language = headerStore.get('accept-language')?.split(',')[0].split(';')[0];
 
@@ -101,24 +108,27 @@ export default async function RedirectPage({
         const referrerHost = parseHost(referer);
         const originHost = parseHost(origin);
         const sourceType = getSourceType({ referrerHost, originHost, secFetchSite, currentHost });
+        const botDetected = isBot(userAgent);
 
-        const { rows } = await sql`SELECT url FROM redirects WHERE id = ${slug}`;
-        const redirectData = rows[0] as { url: string } | undefined;
+        const { rows } = await sql`SELECT url, countdown_seconds FROM redirects WHERE id = ${slug}`;
+        const redirectData = rows[0] as { url: string; countdown_seconds: number | null } | undefined;
 
         if (redirectData) {
             const eventToken = `${slug}_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
             let trackedToken = '';
+            const countdownSeconds = redirectData.countdown_seconds ?? 5;
 
-            // Increment clicks immediately when the page is loaded
             await sql`UPDATE redirects SET clicks = clicks + 1 WHERE id = ${slug}`;
             await sql`
               INSERT INTO redirect_click_events (
                 redirect_id, referrer_host, source_type, country_code, user_agent, 
-                ip_address, language, device_type, os_name, browser_name
+                ip_address, language, device_type, os_name, browser_name,
+                city, region, is_bot, referrer_url, asn
               )
               VALUES (
                 ${slug}, ${referrerHost}, ${sourceType}, ${countryCode}, ${userAgent},
-                ${ipAddress}, ${language}, ${deviceType}, ${osName}, ${browserName}
+                ${ipAddress}, ${language}, ${deviceType}, ${osName}, ${browserName},
+                ${city}, ${region}, ${botDetected}, ${referer}, ${asn}
               )
             `;
             try {
@@ -132,7 +142,7 @@ export default async function RedirectPage({
             }
 
             const decryptedUrl = decrypt(redirectData.url);
-            return <RedirectPageClient url={decryptedUrl} eventToken={trackedToken} />;
+            return <RedirectPageClient url={decryptedUrl} eventToken={trackedToken} countdownSeconds={countdownSeconds} />;
         }
     } catch (error) {
         console.error('Redirect error:', error);
