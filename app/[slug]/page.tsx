@@ -1,6 +1,6 @@
 import sql, { initDb } from '@/lib/db';
 import { headers } from 'next/headers';
-import { notFound } from 'next/navigation';
+import { redirect } from 'next/navigation';
 import RedirectPageClient from './RedirectPageClient';
 import { UAParser } from 'ua-parser-js';
 import { decrypt } from '@/lib/encryption';
@@ -82,7 +82,7 @@ export default async function RedirectPage({
 
     const reserved = ['admin', 'api', 'favicon.ico', 'robots.txt', 'sitemap.xml', 'privacy', 'terms'];
     if (!slug || reserved.includes(slug) || slug.includes('.')) {
-        return notFound();
+        return redirect('/#404');
     }
 
     try {
@@ -148,5 +148,5 @@ export default async function RedirectPage({
         console.error('Redirect error:', error);
     }
 
-    return notFound();
+    return redirect('/#404');
 }

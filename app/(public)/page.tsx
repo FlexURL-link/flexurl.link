@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 const IconArrow = () => (
@@ -46,6 +47,19 @@ const stats = [
 ];
 
 export default function Home() {
+  const [show404, setShow404] = useState(false);
+  const [notFoundSlug, setNotFoundSlug] = useState('');
+
+  useEffect(() => {
+    if (window.location.hash === '#404') {
+      setNotFoundSlug(window.location.pathname.split('/').pop() || '');
+      setShow404(true);
+      window.history.replaceState(null, '', window.location.pathname + window.location.search);
+      const timer = setTimeout(() => setShow404(false), 6000);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
   return (
     <>
       {/* HERO */}
@@ -345,6 +359,14 @@ export default function Home() {
         </div>
       </section>
       </div>
+
+      {show404 && (
+        <div className="toast-404">
+          <span className="toast-404-icon">!</span>
+          <span>The URL <strong>/{notFoundSlug}</strong> you requested doesn&apos;t exist.</span>
+          <button className="toast-404-close" onClick={() => setShow404(false)}>×</button>
+        </div>
+      )}
 
       <style jsx>{`
         .hero {
@@ -1113,6 +1135,69 @@ export default function Home() {
         }
         .section-default {
           width: 100%;
+        }
+
+        .toast-404 {
+          position: fixed;
+          bottom: 1.5rem;
+          right: 1.5rem;
+          background: var(--danger-soft);
+          border: 1px solid rgba(220, 38, 38, 0.18);
+          border-radius: var(--radius);
+          padding: 0.85rem 1rem;
+          display: flex;
+          align-items: center;
+          gap: 0.65rem;
+          font-size: 0.88rem;
+          color: var(--text-secondary);
+          box-shadow: var(--shadow-lg);
+          z-index: 999;
+          animation: fadeInUp 0.35s ease;
+          max-width: 420px;
+        }
+
+        .toast-404-icon {
+          flex-shrink: 0;
+          width: 24px;
+          height: 24px;
+          display: grid;
+          place-items: center;
+          border-radius: 50%;
+          background: var(--danger);
+          color: #fff;
+          font-weight: 700;
+          font-size: 0.85rem;
+        }
+
+        .toast-404 strong {
+          color: var(--text-main);
+        }
+
+        .toast-404-close {
+          flex-shrink: 0;
+          width: 24px;
+          height: 24px;
+          display: grid;
+          place-items: center;
+          border-radius: 50%;
+          font-size: 1rem;
+          color: var(--text-muted);
+          transition: background 0.18s ease, color 0.18s ease;
+          margin-left: auto;
+        }
+
+        .toast-404-close:hover {
+          background: var(--bg-muted);
+          color: var(--text-main);
+        }
+
+        @media (max-width: 640px) {
+          .toast-404 {
+            left: 1rem;
+            right: 1rem;
+            bottom: 1rem;
+            max-width: none;
+          }
         }
       `}</style>
     </>
