@@ -46,7 +46,9 @@ export async function initDb() {
         url TEXT NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         clicks INTEGER DEFAULT 0,
-        user_id TEXT
+        user_id TEXT,
+        version TEXT DEFAULT 'dash',
+        expires_at TIMESTAMP
       )
     `;
         await sql`CREATE INDEX IF NOT EXISTS redirects_user_id_idx ON redirects(user_id)`;
