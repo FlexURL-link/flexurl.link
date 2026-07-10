@@ -7,44 +7,29 @@ const IconArrow = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
 );
 
-const IconChart = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 3v18h18" /><path d="m19 9-5 5-4-4-3 3" /></svg>
-);
-
 const IconShield = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="m9 12 2 2 4-4" /></svg>
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
 );
 
-const IconZap = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
+const IconOff = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18.36 6.64A9 9 0 0 1 5.64 18.36" /><path d="M12 2v4" /><circle cx="12" cy="12" r="10" /></svg>
 );
 
-const IconLink = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></svg>
-);
-
-const IconGlobe = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M2 12h20" /><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z" /></svg>
-);
-
-const IconCode = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg>
-);
-
-const IconQR = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /><path d="M14 14h3v3h-3z" /><path d="M19 14h2v2h-2z" /><path d="M14 19h2v2h-2z" /><path d="M19 19h2v2h-2z" /></svg>
+const IconClock = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
 );
 
 const IconCheck = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
 );
 
-const stats = [
-  { label: 'Links generated', value: '1.2M+' },
-  { label: 'Uptime guarantee', value: '99.9%' },
-  { label: 'Active users', value: '45k+' },
-  { label: 'Average latency', value: '< 50ms' },
-];
+const IconLock = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
+);
+
+const IconLink = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></svg>
+);
 
 export default function Home() {
   const [show404, setShow404] = useState(false);
@@ -74,43 +59,43 @@ export default function Home() {
           <div className="hero-content animate-in">
             <span className="eyebrow animate-in delay-1">
               <span className="eyebrow-dot" />
-              The next-generation redirection tool
+              Privacy first link shortener
             </span>
 
             <h1 className="text-balance animate-in delay-2">
-              Short links that <br />
-              deliver <span className="gradient-text">spectacular results.</span>
+              Short links.<br />
+              <span className="gradient-text">No compromise.</span>
             </h1>
 
             <p className="text-balance animate-in delay-3">
-              FlexURL shortens, secures and analyzes your URLs in real time.
-              A modern infrastructure built for creators, marketers and developers.
+              Paste a URL, get a short link. No account, no tracking, no cookies,
+              no analytics. The link works or it doesn&apos;t. That&apos;s all.
             </p>
 
             <div className="hero-actions animate-in delay-4">
-              <a href="https://portal.flexurl.link" target="_blank" rel="noreferrer" className="btn btn-gradient">
-                Start for free
+              <a href="https://create.flexurl.link" target="_blank" rel="noreferrer" className="btn btn-gradient">
+                Create a link
                 <IconArrow />
               </a>
-              <Link href="#features" className="btn btn-soft">
-                Discover the tools
+              <Link href="#how" className="btn btn-soft">
+                How it works
               </Link>
             </div>
 
             <div className="hero-trust animate-in delay-5">
               <div className="trust-item">
-                <IconCheck /> No credit card required
+                <IconCheck /> No account needed
               </div>
               <div className="trust-item">
-                <IconCheck /> Unlimited links
+                <IconCheck /> Zero data collected
               </div>
               <div className="trust-item">
-                <IconCheck /> Secure HTTPS
+                <IconCheck /> Links expire automatically
               </div>
             </div>
           </div>
 
-          {/* Hero preview */}
+          {/* Hero visual */}
           <div className="hero-visual animate-scale delay-3">
             <div className="browser-mockup">
               <div className="browser-bar">
@@ -118,253 +103,191 @@ export default function Home() {
                   <span /> <span /> <span />
                 </div>
                 <div className="browser-url">
-                  <span className="lock">🔒</span> https://portal.flexurl.link
+                  <span className="lock">&#128274;</span> create.flexurl.link
                 </div>
               </div>
 
               <div className="browser-body">
                 <div className="mock-row">
-                  <div className="mock-label">Source URL</div>
+                  <div className="mock-label">Destination URL</div>
                   <div className="mock-field long">
-                    <span className="mock-value-mono muted">https://github.com/drayko/awesome-project-2026-very-long-url</span>
+                    <span className="mock-value-mono muted">https://example.com/very-long-url-that-nobody-remembers</span>
                   </div>
                 </div>
 
                 <div className="mock-arrow">
                   <div className="mock-arrow-line" />
                   <div className="mock-arrow-icon">
-                    <IconZap />
+                    <IconLink />
                   </div>
                   <div className="mock-arrow-line" />
                 </div>
 
                 <div className="mock-row highlight">
-                  <div className="mock-label primary">Short link generated</div>
+                  <div className="mock-label primary">Short link</div>
                   <div className="mock-field">
                     <span className="mock-value-mono primary">flexurl.link/</span>
-                    <span className="mock-value-mono brand">awesome-git</span>
-                    <span className="mock-copy">Copy</span>
+                    <span className="mock-value-mono brand">abc123</span>
                   </div>
                 </div>
 
-                <div className="mock-stats">
-                  <div className="mock-stat">
-                    <div className="mock-stat-value">2,847</div>
-                    <div className="mock-stat-label">Total clicks</div>
-                  </div>
-                  <div className="mock-stat">
-                    <div className="mock-stat-value gradient-text">+24%</div>
-                    <div className="mock-stat-label">This month</div>
-                  </div>
-                  <div className="mock-stat">
-                    <div className="mock-stat-value">12</div>
-                    <div className="mock-stat-label">Countries</div>
-                  </div>
+                <div className="mock-privacy">
+                  <IconShield />
+                  <span>No data stored. No cookies. No tracking.</span>
                 </div>
-              </div>
-            </div>
-
-            <div className="floating-card floating-1">
-              <div className="floating-icon cyan">
-                <IconGlobe />
-              </div>
-              <div>
-                <div className="floating-title">Paris, FR</div>
-                <div className="floating-sub">+18 clicks today</div>
-              </div>
-            </div>
-
-            <div className="floating-card floating-2">
-              <div className="floating-icon emerald">
-                <IconCheck />
-              </div>
-              <div>
-                <div className="floating-title">Link online</div>
-                <div className="floating-sub">Redirection active</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* STATS BAR */}
-      <section id="stats" className="container stats-section">
-        <div className="stats-bar">
-          {stats.map((stat, i) => (
-            <div key={stat.label} className={`stats-item animate-in delay-${i + 1}`}>
-              <div className="stats-value">{stat.value}</div>
-              <div className="stats-label">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       <div className="section-darker">
-        {/* FEATURES BENTO */}
+        {/* FEATURES */}
         <section id="features" className="container section-space">
-        <div className="section-head">
-          <span className="eyebrow"><span className="eyebrow-dot" />Features</span>
-          <h2>A <span className="gradient-text">complete and modern</span> toolkit</h2>
-          <p>Everything you need to turn every link into a growth lever.</p>
-        </div>
+          <div className="section-head">
+            <span className="eyebrow"><span className="eyebrow-dot" />Why FlexURL</span>
+            <h2>Shortened links, <span className="gradient-text">nothing else.</span></h2>
+            <p>No accounts, no dashboards, no analytics. Just a link that works.</p>
+          </div>
 
-        <div className="bento">
-          <article className="bento-card bento-wide animate-in">
-            <div className="bento-head">
-              <div className="bento-icon indigo"><IconChart /></div>
-              <h3>Detailed analytics</h3>
-              <p>Track every click with surgical precision: origin, devices, browsers, sources and trends.</p>
-            </div>
-            <div className="bento-visual">
-              <div className="mini-chart">
-                <div className="mini-bar" style={{ height: '40%' }} />
-                <div className="mini-bar" style={{ height: '70%' }} />
-                <div className="mini-bar" style={{ height: '55%' }} />
-                <div className="mini-bar highlight" style={{ height: '92%' }} />
-                <div className="mini-bar" style={{ height: '65%' }} />
-                <div className="mini-bar" style={{ height: '80%' }} />
-                <div className="mini-bar" style={{ height: '50%' }} />
+          <div className="bento">
+            <article className="bento-card animate-in">
+              <div className="bento-icon emerald"><IconShield /></div>
+              <h3>Zero tracking</h3>
+              <p>No clicks counted, no visitors profiled, no data harvested. Your links are just links.</p>
+            </article>
+
+            <article className="bento-card animate-in delay-1">
+              <div className="bento-icon violet"><IconOff /></div>
+              <h3>No account required</h3>
+              <p>No sign-up, no login, no password reset emails. Paste a URL and you&apos;re done.</p>
+            </article>
+
+            <article className="bento-card animate-in delay-2">
+              <div className="bento-icon amber"><IconClock /></div>
+              <h3>Expiration dates</h3>
+              <p>Set how long your link lives. When it expires, it&apos;s gone. No residue, no data left behind.</p>
+            </article>
+
+            <article className="bento-card animate-in delay-3">
+              <div className="bento-icon indigo"><IconLock /></div>
+              <h3>Encrypted destinations</h3>
+              <p>Destination URLs are encrypted at rest. Even we can&apos;t read where your links point to.</p>
+            </article>
+
+            <article className="bento-card bento-wide animate-in delay-4">
+              <div className="bento-head">
+                <div className="bento-icon rose"><IconLink /></div>
+                <h3>Custom slugs</h3>
+                <p>Create memorable, on-brand short links. Or let us generate a random one for you.</p>
               </div>
-            </div>
-          </article>
-
-          <article className="bento-card animate-in delay-1">
-            <div className="bento-icon amber"><IconZap /></div>
-            <h3>Lightning fast</h3>
-            <p>Instant redirects powered by our edge infrastructure.</p>
-            <div className="bento-metric">
-              <span className="metric-value">38ms</span>
-              <span className="metric-label">Average latency</span>
-            </div>
-          </article>
-
-          <article className="bento-card animate-in delay-2">
-            <div className="bento-icon violet"><IconLink /></div>
-            <h3>Custom slugs</h3>
-            <p>Create on-brand links that are easy to remember and share.</p>
-            <div className="bento-slug-demo">
-              <div className="slug-mock">
-                <span className="slug-host">flexurl.link/</span>
-                <span className="slug-custom">launch-day</span>
+              <div className="bento-slug-demo">
+                <div className="slug-mock">
+                  <span className="slug-host">flexurl.link/</span>
+                  <span className="slug-custom">launch-day</span>
+                </div>
+                <div className="slug-mock alt">
+                  <span className="slug-host">flexurl.link/</span>
+                  <span className="slug-custom">summer-sale</span>
+                </div>
               </div>
-              <div className="slug-mock alt">
-                <span className="slug-host">flexurl.link/</span>
-                <span className="slug-custom">summer-sale</span>
-              </div>
-            </div>
-          </article>
-
-          <article className="bento-card animate-in delay-3">
-            <div className="bento-icon emerald"><IconShield /></div>
-            <h3>SSL security</h3>
-            <p>Automatic HTTPS encryption for all your links.</p>
-            <div className="bento-metric">
-              <span className="metric-value">100%</span>
-              <span className="metric-label">Encrypted links</span>
-            </div>
-          </article>
-
-          <article className="bento-card animate-in delay-4">
-            <div className="bento-icon cyan"><IconQR /></div>
-            <h3>QR Codes</h3>
-            <p>Auto-generated QR codes for every link you create.</p>
-          </article>
-        </div>
-      </section>
+            </article>
+          </div>
+        </section>
       </div>
 
       <div className="section-default">
-      {/* HOW IT WORKS */}
-      <section id="how" className="container section-space">
-        <div className="section-head">
-          <span className="eyebrow"><span className="eyebrow-dot" />How it works</span>
-          <h2>Three steps. <span className="gradient-text">Zero friction.</span></h2>
-          <p>From a raw URL to a polished link in less than 10 seconds.</p>
-        </div>
+        {/* HOW IT WORKS */}
+        <section id="how" className="container section-space">
+          <div className="section-head">
+            <span className="eyebrow"><span className="eyebrow-dot" />How it works</span>
+            <h2>Paste. Shorten. <span className="gradient-text">Done.</span></h2>
+            <p>From a raw URL to a short link in under 5 seconds.</p>
+          </div>
 
-        <div className="steps">
-          <div className="step animate-in">
-            <div className="step-num">1</div>
-            <h3>Paste your URL</h3>
-            <p>Enter the destination address, no matter how long or complex it is.</p>
-            <div className="step-visual">
-              <div className="code-line"><span className="dot-r" /><span className="dot-y" /><span className="dot-g" /></div>
-              <div className="code-line">
-                <span className="code-mono muted">https://example.com/very-long...</span>
+          <div className="steps">
+            <div className="step animate-in">
+              <div className="step-num">1</div>
+              <h3>Paste your URL</h3>
+              <p>Enter the destination address, no matter how long or complex it is.</p>
+              <div className="step-visual">
+                <div className="code-line"><span className="dot-r" /><span className="dot-y" /><span className="dot-g" /></div>
+                <div className="code-line">
+                  <span className="code-mono muted">https://example.com/very-long...</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="step-arrow">
+              <IconArrow />
+            </div>
+
+            <div className="step animate-in delay-1">
+              <div className="step-num">2</div>
+              <h3>Customize (or not)</h3>
+              <p>Choose a slug or let us generate one. Optionally set an expiration date.</p>
+              <div className="step-visual">
+                <div className="code-line">
+                  <span className="code-mono muted">flexurl.link/</span>
+                  <span className="code-mono brand">my-link</span>
+                  <span className="cursor-blink" />
+                </div>
+              </div>
+            </div>
+
+            <div className="step-arrow">
+              <IconArrow />
+            </div>
+
+            <div className="step animate-in delay-2">
+              <div className="step-num">3</div>
+              <h3>Share it</h3>
+              <p>Copy your short link and share it anywhere. No strings attached.</p>
+              <div className="step-visual">
+                <div className="code-line">
+                  <span className="tag tag-emerald">&#9679; Active</span>
+                  <span className="code-mono muted">Ready to share</span>
+                </div>
               </div>
             </div>
           </div>
-
-          <div className="step-arrow">
-            <IconArrow />
-          </div>
-
-          <div className="step animate-in delay-1">
-            <div className="step-num">2</div>
-            <h3>Customize</h3>
-            <p>Pick a short, memorable slug that matches your brand.</p>
-            <div className="step-visual">
-              <div className="code-line">
-                <span className="code-mono muted">flexurl.link/</span>
-                <span className="code-mono brand">my-link</span>
-                <span className="cursor-blink" />
-              </div>
-            </div>
-          </div>
-
-          <div className="step-arrow">
-            <IconArrow />
-          </div>
-
-          <div className="step animate-in delay-2">
-            <div className="step-num">3</div>
-            <h3>Share & analyze</h3>
-            <p>Share your link anywhere and watch its performance in real time.</p>
-            <div className="step-visual">
-              <div className="code-line">
-                <span className="tag tag-emerald">● Online</span>
-                <span className="code-mono muted">2 847 clicks</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
       </div>
 
       <div className="section-darker">
-      {/* CTA */}
-      <section className="container section-space">
-        <div className="cta animate-in">
-          <div className="cta-glow" aria-hidden="true" />
-          <div className="cta-content">
-            <span className="eyebrow eyebrow-on-dark"><span className="eyebrow-dot" />Ready to start?</span>
-            <h2>Take your links to the next level.</h2>
-            <p>Join thousands of users who trust FlexURL to power their traffic.</p>
-            <div className="cta-actions">
-              <a href="https://portal.flexurl.link" target="_blank" rel="noreferrer" className="btn btn-gradient">
-                Create my first link
-                <IconArrow />
-              </a>
-              <Link href="/#features" className="btn btn-ghost-on-dark">
-                Learn more
-              </Link>
+        {/* CTA */}
+        <section className="container section-space">
+          <div className="cta animate-in">
+            <div className="cta-glow" aria-hidden="true" />
+            <div className="cta-content">
+              <span className="eyebrow eyebrow-on-dark"><span className="eyebrow-dot" />Ready?</span>
+              <h2>Create your first link.</h2>
+              <p>No account. No tracking. No BS. Just a short link that works.</p>
+              <div className="cta-actions">
+                <a href="https://create.flexurl.link" target="_blank" rel="noreferrer" className="btn btn-gradient">
+                  Create a link
+                  <IconArrow />
+                </a>
+                <Link href="/#features" className="btn btn-ghost-on-dark">
+                  Learn more
+                </Link>
+              </div>
+            </div>
+
+            <div className="cta-decoration" aria-hidden="true">
+              <div className="dec-link">flexurl.link/<span>launch</span></div>
+              <div className="dec-link">flexurl.link/<span>summer</span></div>
+              <div className="dec-link">flexurl.link/<span>deal-2026</span></div>
             </div>
           </div>
-
-          <div className="cta-decoration" aria-hidden="true">
-            <div className="dec-link">flexurl.link/<span>launch</span></div>
-            <div className="dec-link">flexurl.link/<span>summer</span></div>
-            <div className="dec-link">flexurl.link/<span>deal-2026</span></div>
-          </div>
-        </div>
-      </section>
+        </section>
       </div>
 
       {show404 && (
         <div className="toast-404">
           <span className="toast-404-icon">!</span>
           <span>The URL <strong>/{notFoundSlug}</strong> you requested doesn&apos;t exist.</span>
-          <button className="toast-404-close" onClick={() => setShow404(false)}>×</button>
+          <button className="toast-404-close" onClick={() => setShow404(false)}>&times;</button>
         </div>
       )}
 
@@ -582,16 +505,6 @@ export default function Home() {
         .mock-value-mono.primary { color: var(--text-main); font-weight: 600; }
         .mock-value-mono.brand { color: var(--brand); font-weight: 700; }
 
-        .mock-copy {
-          margin-left: auto;
-          font-size: 0.74rem;
-          font-weight: 700;
-          padding: 0.28rem 0.7rem;
-          background: var(--text-main);
-          color: var(--text-inverse);
-          border-radius: 999px;
-        }
-
         .mock-arrow {
           display: flex;
           align-items: center;
@@ -618,141 +531,18 @@ export default function Home() {
           place-items: center;
         }
 
-        .mock-stats {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 0.6rem;
-          padding-top: 0.5rem;
-        }
-
-        .mock-stat {
-          background: var(--bg-soft);
-          border: 1px solid var(--line);
-          border-radius: var(--radius);
-          padding: 0.75rem;
-          text-align: center;
-        }
-
-        .mock-stat-value {
-          font-family: 'Manrope', sans-serif;
-          font-size: 1.25rem;
-          font-weight: 800;
-          color: var(--text-main);
-          letter-spacing: -0.02em;
-        }
-
-        .mock-stat-label {
-          font-size: 0.72rem;
-          color: var(--text-muted);
-          margin-top: 0.18rem;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-          font-weight: 600;
-        }
-
-        /* Floating cards */
-        .floating-card {
-          position: absolute;
-          background: var(--bg-surface);
-          border: 1px solid var(--line);
-          border-radius: var(--radius);
-          padding: 0.75rem 1rem;
+        .mock-privacy {
           display: flex;
           align-items: center;
-          gap: 0.7rem;
-          box-shadow: var(--shadow-lg);
-          animation: float 6s ease-in-out infinite;
-          z-index: 2;
-        }
-
-        .floating-1 {
-          top: 8%;
-          left: -40px;
-          animation-delay: -2s;
-        }
-
-        .floating-2 {
-          bottom: 8%;
-          right: -30px;
-          animation-delay: -4s;
-        }
-
-        @media (max-width: 1024px) {
-          .floating-1 { left: 10px; }
-          .floating-2 { right: 10px; }
-        }
-
-        @media (max-width: 640px) {
-          .floating-card { display: none; }
-        }
-
-        .floating-icon {
-          width: 36px;
-          height: 36px;
-          border-radius: 10px;
-          display: grid;
-          place-items: center;
-          flex-shrink: 0;
-        }
-
-        .floating-icon.cyan { background: #ecfeff; color: #0891b2; }
-        .floating-icon.emerald { background: var(--success-soft); color: #047857; }
-
-        .floating-title {
-          font-size: 0.85rem;
-          font-weight: 700;
-          color: var(--text-main);
-        }
-
-        .floating-sub {
-          font-size: 0.74rem;
-          color: var(--text-muted);
-        }
-
-        /* === Stats bar === */
-        .stats-section {
-          position: relative;
-          z-index: 1;
-          margin-top: -2rem;
-        }
-
-        .stats-bar {
-          background: var(--bg-surface);
-          border: 1px solid var(--line);
-          border-radius: var(--radius-xl);
-          padding: 1.5rem 2rem;
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 1rem;
-          box-shadow: var(--shadow-lg);
-        }
-
-        @media (max-width: 720px) {
-          .stats-bar { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-        }
-
-        .stats-item { text-align: center; }
-
-        .stats-item + .stats-item {
-          border-left: 1px solid var(--line);
-        }
-
-        @media (max-width: 720px) {
-          .stats-item + .stats-item { border-left: 0; }
-        }
-
-        .stats-value {
-          font-family: 'Manrope', sans-serif;
-          font-size: 1.85rem;
-          font-weight: 800;
-          letter-spacing: -0.025em;
-          color: var(--text-main);
-        }
-
-        .stats-label {
-          font-size: 0.85rem;
-          color: var(--text-muted);
-          font-weight: 500;
+          justify-content: center;
+          gap: 0.5rem;
+          font-size: 0.78rem;
+          font-weight: 600;
+          color: var(--success);
+          background: var(--success-soft);
+          border: 1px solid rgba(5, 150, 105, 0.15);
+          border-radius: var(--radius);
+          padding: 0.65rem;
           margin-top: 0.25rem;
         }
 
@@ -808,18 +598,16 @@ export default function Home() {
 
         .bento-card:hover::after { opacity: 1; }
 
-        .bento-large { grid-column: span 2; grid-row: span 2; }
         .bento-wide { grid-column: span 2; }
 
         @media (max-width: 900px) {
           .bento { grid-template-columns: repeat(2, 1fr); }
-          .bento-large { grid-column: span 2; grid-row: auto; }
           .bento-wide { grid-column: span 2; }
         }
 
         @media (max-width: 540px) {
           .bento { grid-template-columns: 1fr; }
-          .bento-large, .bento-wide { grid-column: span 1; }
+          .bento-wide { grid-column: span 1; }
         }
 
         .bento-head {
@@ -843,64 +631,10 @@ export default function Home() {
         .bento-icon.amber { background: var(--warning-soft); color: #b45309; }
         .bento-icon.emerald { background: var(--success-soft); color: #047857; }
         .bento-icon.violet { background: #f5f3ff; color: #7c3aed; }
-        .bento-icon.cyan { background: #ecfeff; color: #0891b2; }
         .bento-icon.rose { background: #fff1f2; color: #be123c; }
 
         .bento-card h3 { font-size: 1.15rem; font-family: 'Manrope', sans-serif; }
         .bento-card p { font-size: 0.92rem; }
-
-        .bento-visual {
-          margin-top: auto;
-          background: var(--bg-soft);
-          border: 1px solid var(--line);
-          border-radius: var(--radius);
-          padding: 1.25rem;
-          display: flex;
-          flex-direction: column;
-          gap: 0.75rem;
-        }
-
-        .mini-chart {
-          display: flex;
-          align-items: end;
-          justify-content: space-between;
-          gap: 0.4rem;
-          height: 110px;
-        }
-
-        .mini-bar {
-          flex: 1;
-          background: linear-gradient(180deg, #c7d2fe 0%, #6366f1 100%);
-          border-radius: 6px 6px 2px 2px;
-          min-height: 8px;
-          transition: transform 0.3s ease;
-        }
-
-        .mini-bar.highlight {
-          background: linear-gradient(180deg, #f0abfc 0%, #c026d3 100%);
-          box-shadow: 0 -8px 20px rgba(192, 38, 211, 0.25);
-        }
-
-        .bento-metric {
-          display: flex;
-          align-items: baseline;
-          gap: 0.4rem;
-          margin-top: auto;
-          padding-top: 0.5rem;
-        }
-
-        .metric-value {
-          font-family: 'Manrope', sans-serif;
-          font-size: 1.5rem;
-          font-weight: 800;
-          color: var(--text-main);
-          letter-spacing: -0.02em;
-        }
-
-        .metric-label {
-          font-size: 0.82rem;
-          color: var(--text-muted);
-        }
 
         .bento-slug-demo {
           margin-top: auto;
@@ -1023,6 +757,21 @@ export default function Home() {
           place-items: center;
           color: var(--text-faint);
           padding: 0 0.25rem;
+        }
+
+        .tag {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.3rem;
+          font-size: 0.74rem;
+          font-weight: 700;
+          padding: 0.2rem 0.55rem;
+          border-radius: 999px;
+        }
+
+        .tag-emerald {
+          background: rgba(16, 185, 129, 0.12);
+          color: #059669;
         }
 
         /* === CTA === */

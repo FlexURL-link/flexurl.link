@@ -33,10 +33,9 @@ export function PublicNav() {
         </Link>
         <div className="nav-links">
           <Link href="/#features" className="nav-link">Features</Link>
-          <Link href="/#stats" className="nav-link">Impact</Link>
           <Link href="/#how" className="nav-link">How it works</Link>
-          <a href="https://portal.flexurl.link" target="_blank" rel="noreferrer" className="btn btn-primary btn-sm">
-            Portal
+          <a href="https://create.flexurl.link" target="_blank" rel="noreferrer" className="btn btn-primary btn-sm">
+            Create a link
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
           </a>
         </div>
@@ -56,7 +55,7 @@ export function PublicFooter() {
               <span>FlexURL</span>
             </Link>
             <p style={{ fontSize: '0.92rem', maxWidth: 320, marginTop: '0.85rem' }}>
-              The modern platform to shorten, manage and analyze your links in real time.
+              Privacy-first link shortener. No accounts, no tracking, no data collected.
             </p>
             <div className="footer-tag" style={{ marginTop: '1.25rem' }}>
               <span className="status-dot" />
@@ -66,9 +65,8 @@ export function PublicFooter() {
 
           <div>
             <h4 className="footer-col-title">Product</h4>
+            <a href="https://create.flexurl.link" className="footer-link">Create a link</a>
             <Link href="/#features" className="footer-link">Features</Link>
-            <Link href="/#stats" className="footer-link">Performance</Link>
-            <Link href="/dashboard" className="footer-link">Dashboard</Link>
             <Link href="/#how" className="footer-link">How it works</Link>
           </div>
 
@@ -87,7 +85,7 @@ export function PublicFooter() {
         </div>
 
         <div className="footer-bottom">
-          <span>© 2026 FlexURL. Built for performance.</span>
+          <span>© 2026 FlexURL. Privacy first.</span>
           <span className="footer-tag">
             <span className="status-dot" />
             Service online · 99.9% uptime
