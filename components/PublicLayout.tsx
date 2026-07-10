@@ -57,10 +57,6 @@ export function PublicFooter() {
             <p style={{ fontSize: '0.92rem', maxWidth: 320, marginTop: '0.85rem' }}>
               Privacy-first link shortener. No accounts, no tracking, no data collected.
             </p>
-            <div className="footer-tag" style={{ marginTop: '1.25rem' }}>
-              <span className="status-dot" />
-              All systems operational
-            </div>
           </div>
 
           <div>
