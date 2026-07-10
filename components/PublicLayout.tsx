@@ -79,17 +79,17 @@ export function PublicFooter() {
 
           <div>
             <h4 className="footer-col-title">Contact</h4>
-            <a href="mailto:contact@flexurl.link" className="footer-link">contact@flexurl.link</a>
-            <a href="https://codeberg.org/ddrayko/FlexURL" target="_blank" rel="noreferrer" className="footer-link">Codeberg</a>
+            <a href="mailto:hello@flexurl.link" className="footer-link">hello@flexurl.link</a>
+            <a href="https://github.com/FlexURL-link" target="_blank" rel="noreferrer" className="footer-link">GitHub</a>
           </div>
         </div>
 
         <div className="footer-bottom">
           <span>© 2026 FlexURL. Privacy first.</span>
-          <span className="footer-tag">
+          <a href="https://status.flexurl.link" target="_blank" rel="noreferrer" className="footer-tag" style={{ textDecoration: 'none' }}>
             <span className="status-dot" />
             Service online · 99.9% uptime
-          </span>
+          </a>
         </div>
       </div>
     </footer>
