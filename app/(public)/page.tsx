@@ -23,17 +23,19 @@ const IconCheck = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
 );
 
-const IconLock = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
-);
-
-const IconLink = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></svg>
+const IconCopy = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg>
 );
 
 export default function Home() {
   const [show404, setShow404] = useState(false);
   const [notFoundSlug, setNotFoundSlug] = useState('');
+  const [createUrl, setCreateUrl] = useState('');
+  const [customId, setCustomId] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [result, setResult] = useState<{ slug: string } | null>(null);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     if (window.location.hash === '#404') {
@@ -44,6 +46,45 @@ export default function Home() {
       return () => clearTimeout(timer);
     }
   }, []);
+
+  const handleCreate = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (loading) return;
+    setLoading(true);
+    setError('');
+    setResult(null);
+
+    try {
+      const res = await fetch('https://create.flexurl.link/api/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: createUrl, customId: customId || undefined }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error || 'Something went wrong.');
+      } else {
+        setResult({ slug: data.slug });
+        setCreateUrl('');
+        setCustomId('');
+      }
+    } catch {
+      setError('Network error. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const copyLink = async () => {
+    if (!result) return;
+    try {
+      await navigator.clipboard.writeText(`https://flexurl.link/${result.slug}`);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      alert('Copy failed');
+    }
+  };
 
   return (
     <>
@@ -68,21 +109,10 @@ export default function Home() {
             </h1>
 
             <p className="text-balance animate-in delay-3">
-              Paste a URL, get a short link. No account, no tracking, no cookies,
-              no analytics. The link works or it doesn&apos;t. That&apos;s all.
+              No account, no tracking, no cookies. Just a link that works.
             </p>
 
-            <div className="hero-actions animate-in delay-4">
-              <a href="https://create.flexurl.link" target="_blank" rel="noreferrer" className="btn btn-gradient">
-                Create a link
-                <IconArrow />
-              </a>
-              <Link href="#how" className="btn btn-soft">
-                How it works
-              </Link>
-            </div>
-
-            <div className="hero-trust animate-in delay-5">
+            <div className="hero-trust animate-in delay-4">
               <div className="trust-item">
                 <IconCheck /> No account needed
               </div>
@@ -95,46 +125,74 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Hero visual */}
+          {/* Hero form */}
           <div className="hero-visual animate-scale delay-3">
-            <div className="browser-mockup">
-              <div className="browser-bar">
-                <div className="browser-dots">
-                  <span /> <span /> <span />
-                </div>
-                <div className="browser-url">
-                  <span className="lock">&#128274;</span> create.flexurl.link
-                </div>
-              </div>
-
-              <div className="browser-body">
-                <div className="mock-row">
-                  <div className="mock-label">Destination URL</div>
-                  <div className="mock-field long">
-                    <span className="mock-value-mono muted">https://example.com/very-long-url-that-nobody-remembers</span>
+            <div className="hero-form-card">
+              {result ? (
+                <div className="hero-result">
+                  <div className="hero-result-success">
+                    <IconCheck /> Link created!
+                  </div>
+                  <div className="hero-input-group">
+                    <span className="hero-input-prefix">flexurl.link/</span>
+                    <input type="text" value={result.slug} readOnly style={{ fontWeight: 700, fontFamily: 'JetBrains Mono, monospace', textAlign: 'center' }} />
+                  </div>
+                  <div className="hero-result-actions">
+                    <button onClick={copyLink} className="btn btn-primary" type="button">
+                      {copied ? <><IconCheck /> Copied</> : <><IconCopy /> Copy link</>}
+                    </button>
+                    <button onClick={() => setResult(null)} className="btn btn-soft" type="button">
+                      Create another
+                    </button>
                   </div>
                 </div>
-
-                <div className="mock-arrow">
-                  <div className="mock-arrow-line" />
-                  <div className="mock-arrow-icon">
-                    <IconLink />
+              ) : (
+                <form onSubmit={handleCreate} className="hero-create-form">
+                  <div className="hero-form-field">
+                    <label className="hero-form-label" htmlFor="hero-url">Destination URL</label>
+                    <input
+                      id="hero-url"
+                      type="url"
+                      value={createUrl}
+                      onChange={(e) => setCreateUrl(e.target.value)}
+                      required
+                      placeholder="https://example.com/my-long-url"
+                    />
                   </div>
-                  <div className="mock-arrow-line" />
-                </div>
 
-                <div className="mock-row highlight">
-                  <div className="mock-label primary">Short link</div>
-                  <div className="mock-field">
-                    <span className="mock-value-mono primary">flexurl.link/</span>
-                    <span className="mock-value-mono brand">abc123</span>
+                  <div className="hero-form-field">
+                    <label className="hero-form-label" htmlFor="hero-slug">
+                      Custom slug <span className="hero-form-hint">(optional)</span>
+                    </label>
+                    <div className="hero-input-group">
+                      <span className="hero-input-prefix">flexurl.link/</span>
+                      <input
+                        id="hero-slug"
+                        type="text"
+                        value={customId}
+                        onChange={(e) => setCustomId(e.target.value)}
+                        placeholder="my-slug"
+                        maxLength={100}
+                      />
+                    </div>
                   </div>
-                </div>
 
-                <div className="mock-privacy">
-                  <IconShield />
-                  <span>No data stored. No cookies. No tracking.</span>
-                </div>
+                  {error && (
+                    <div className="hero-alert hero-alert-error">
+                      {error}
+                    </div>
+                  )}
+
+                  <button type="submit" disabled={loading} className="btn btn-gradient btn-lg btn-block">
+                    {loading ? <><span className="hero-spinner" /> Creating...</> : 'Create short link'}
+                  </button>
+                </form>
+              )}
+
+              <div className="hero-form-footer">
+                <a href="https://create.flexurl.link" target="_blank" rel="noreferrer" className="hero-form-link">
+                  Open full editor <IconArrow />
+                </a>
               </div>
             </div>
           </div>
@@ -368,13 +426,6 @@ export default function Home() {
           max-width: 540px;
         }
 
-        .hero-actions {
-          display: flex;
-          gap: 0.75rem;
-          margin-top: 2rem;
-          flex-wrap: wrap;
-        }
-
         .hero-trust {
           display: flex;
           gap: 1.5rem;
@@ -395,155 +446,154 @@ export default function Home() {
           color: var(--success);
         }
 
-        /* === Hero visual === */
+        /* === Hero form === */
         .hero-visual {
           position: relative;
-          perspective: 2000px;
         }
 
-        .browser-mockup {
+        .hero-form-card {
           background: var(--bg-surface);
           border: 1px solid var(--line);
           border-radius: var(--radius-xl);
           box-shadow: var(--shadow-xl);
-          overflow: hidden;
-          transform: rotateY(-3deg) rotateX(2deg);
-          transition: transform 0.4s ease;
+          padding: 2rem;
+          animation: scaleIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        .hero-visual:hover .browser-mockup {
-          transform: rotateY(0deg) rotateX(0deg);
-        }
-
-        .browser-bar {
-          background: var(--bg-soft);
-          padding: 0.85rem 1rem;
+        .hero-create-form {
           display: flex;
-          align-items: center;
-          gap: 1rem;
-          border-bottom: 1px solid var(--line);
+          flex-direction: column;
         }
 
-        .browser-dots {
+        .hero-form-field {
           display: flex;
+          flex-direction: column;
           gap: 0.4rem;
+          margin-bottom: 1rem;
         }
 
-        .browser-dots span {
-          width: 11px;
-          height: 11px;
-          border-radius: 50%;
-          background: var(--bg-muted);
+        .hero-form-label {
+          font-size: 0.82rem;
+          font-weight: 600;
+          color: var(--text-secondary);
         }
 
-        .browser-dots span:nth-child(1) { background: #fb7185; }
-        .browser-dots span:nth-child(2) { background: #fbbf24; }
-        .browser-dots span:nth-child(3) { background: #4ade80; }
+        .hero-form-hint {
+          font-size: 0.78rem;
+          color: var(--text-muted);
+          font-weight: 400;
+        }
 
-        .browser-url {
-          flex: 1;
-          background: var(--bg-surface);
+        .hero-input-group {
+          display: flex;
+          align-items: stretch;
           border: 1px solid var(--line);
           border-radius: var(--radius-sm);
-          padding: 0.42rem 0.85rem;
-          font-size: 0.82rem;
-          color: var(--text-muted);
-          font-family: 'JetBrains Mono', monospace;
-          display: flex;
-          align-items: center;
-          gap: 0.4rem;
+          background: #fff;
+          overflow: hidden;
+          transition: border-color 0.18s ease, box-shadow 0.18s ease;
         }
 
-        .lock { font-size: 0.8rem; }
-
-        .browser-body {
-          padding: 1.5rem;
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-        }
-
-        .mock-row {
-          display: flex;
-          flex-direction: column;
-          gap: 0.4rem;
-        }
-
-        .mock-label {
-          font-size: 0.72rem;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 0.08em;
-          color: var(--text-muted);
-        }
-
-        .mock-label.primary { color: var(--brand); }
-
-        .mock-field {
-          background: var(--bg-soft);
-          border: 1px solid var(--line);
-          border-radius: var(--radius);
-          padding: 0.85rem 1rem;
-          display: flex;
-          align-items: center;
-          gap: 0.4rem;
-          flex-wrap: wrap;
-        }
-
-        .mock-row.highlight .mock-field {
-          background: var(--bg-surface);
+        .hero-input-group:focus-within {
           border-color: var(--brand-light);
-          box-shadow: 0 0 0 3px var(--brand-soft);
+          box-shadow: 0 0 0 4px var(--brand-soft);
         }
 
-        .mock-value-mono {
-          font-family: 'JetBrains Mono', monospace;
-          font-size: 0.86rem;
-        }
-
-        .mock-value-mono.muted { color: var(--text-muted); }
-        .mock-value-mono.primary { color: var(--text-main); font-weight: 600; }
-        .mock-value-mono.brand { color: var(--brand); font-weight: 700; }
-
-        .mock-arrow {
+        .hero-input-prefix {
           display: flex;
           align-items: center;
-          justify-content: center;
+          padding: 0 0.75rem;
+          background: var(--bg-soft);
+          color: var(--text-muted);
+          font-size: 0.85rem;
+          font-weight: 500;
+          border-right: 1px solid var(--line);
+          white-space: nowrap;
+        }
+
+        .hero-input-group input {
+          border: 0;
+          border-radius: 0;
+          padding: 0.72rem 0.85rem;
+          background: transparent;
+          font-size: 0.92rem;
+        }
+
+        .hero-input-group input:focus { box-shadow: none; }
+
+        .hero-alert {
+          display: flex;
+          align-items: center;
           gap: 0.6rem;
-          color: var(--text-faint);
-          padding: 0.25rem 0;
-        }
-
-        .mock-arrow-line {
-          flex: 1;
-          height: 1px;
-          background: var(--line);
-          border-top: 1px dashed var(--line-strong);
-        }
-
-        .mock-arrow-icon {
-          width: 32px;
-          height: 32px;
-          border-radius: 50%;
-          background: var(--brand-soft);
-          color: var(--brand);
-          display: grid;
-          place-items: center;
-        }
-
-        .mock-privacy {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-          font-size: 0.78rem;
-          font-weight: 600;
-          color: var(--success);
-          background: var(--success-soft);
-          border: 1px solid rgba(5, 150, 105, 0.15);
+          padding: 0.75rem 0.9rem;
           border-radius: var(--radius);
-          padding: 0.65rem;
-          margin-top: 0.25rem;
+          border: 1px solid;
+          font-size: 0.85rem;
+          margin-bottom: 1rem;
+        }
+
+        .hero-alert-error {
+          background: var(--danger-soft);
+          color: #991b1b;
+          border-color: rgba(220, 38, 38, 0.2);
+        }
+
+        .hero-spinner {
+          width: 18px;
+          height: 18px;
+          border: 2.5px solid rgba(255,255,255,0.3);
+          border-top-color: #fff;
+          border-radius: 50%;
+          animation: spin 0.8s linear infinite;
+        }
+
+        .hero-result {
+          text-align: center;
+        }
+
+        .hero-result-success {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.6rem 1rem;
+          background: var(--success-soft);
+          color: #065f46;
+          border: 1px solid rgba(5, 150, 105, 0.2);
+          border-radius: var(--radius);
+          font-size: 0.88rem;
+          font-weight: 600;
+          margin-bottom: 1.25rem;
+        }
+
+        .hero-result .hero-input-group {
+          margin-bottom: 1rem;
+        }
+
+        .hero-result-actions {
+          display: flex;
+          gap: 0.5rem;
+          justify-content: center;
+        }
+
+        .hero-form-footer {
+          margin-top: 1.25rem;
+          padding-top: 1rem;
+          border-top: 1px solid var(--line);
+          text-align: center;
+        }
+
+        .hero-form-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.35rem;
+          font-size: 0.84rem;
+          font-weight: 600;
+          color: var(--brand);
+          transition: color 0.18s ease;
+        }
+
+        .hero-form-link:hover {
+          color: var(--brand-dark);
         }
 
         /* === Section head === */
