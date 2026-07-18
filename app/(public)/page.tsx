@@ -106,26 +106,21 @@ export default function Home() {
 
         <div className="container hero-inner">
           <div className="hero-content animate-in">
-            <div className="hero-badge animate-in delay-1">
-              <span className="hero-badge-icon">✦</span>
-              180 days since launch
-            </div>
-
-            <span className="eyebrow animate-in delay-2">
+            <span className="eyebrow animate-in delay-1">
               <span className="eyebrow-dot" />
               Privacy first link shortener
             </span>
 
-            <h1 className="text-balance animate-in delay-3">
+            <h1 className="text-balance animate-in delay-2">
               Short links.<br />
               <span className="gradient-text">No compromise.</span>
             </h1>
 
-            <p className="text-balance animate-in delay-4">
+            <p className="text-balance animate-in delay-3">
               No account, no tracking, no cookies. Just a link that works.
             </p>
 
-            <div className="hero-trust animate-in delay-5">
+            <div className="hero-trust animate-in delay-4">
               <div className="trust-item">
                 <IconCheck /> No account needed
               </div>
@@ -365,7 +360,7 @@ export default function Home() {
       <style jsx>{`
         .hero {
           position: relative;
-          padding-top: calc(var(--nav-height) + 4.5rem);
+          padding-top: calc(var(--nav-height) + 36px + 4.5rem);
           padding-bottom: 5rem;
           overflow: hidden;
         }
@@ -457,25 +452,6 @@ export default function Home() {
 
         .trust-item :global(svg) {
           color: var(--success);
-        }
-
-        .hero-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.5rem;
-          padding: 0.5rem 1.2rem;
-          border-radius: 999px;
-          font-size: 0.88rem;
-          font-weight: 700;
-          color: #fff;
-          background: linear-gradient(135deg, #6366f1, #8b5cf6);
-          box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35);
-          letter-spacing: 0.025em;
-          margin-bottom: 1.25rem;
-        }
-
-        .hero-badge-icon {
-          font-size: 1rem;
         }
 
         /* === Hero form === */

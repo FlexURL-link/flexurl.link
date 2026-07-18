@@ -41,6 +41,10 @@ export function PublicNav() {
         </div>
       </div>
     </header>
+    <div className="announcement-bar">
+      <span className="announcement-bar-icon">✦</span>
+      <span>180 days since launch</span>
+    </div>
   );
 }
 

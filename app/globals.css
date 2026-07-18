@@ -509,6 +509,28 @@ code,
   gap: 1rem;
 }
 
+.announcement-bar {
+  position: fixed;
+  top: var(--nav-height);
+  left: 0;
+  right: 0;
+  z-index: 49;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  height: 36px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+}
+
+.announcement-bar-icon {
+  font-size: 0.9rem;
+}
+
 .landing-nav::before {
   content: '';
   position: absolute;
