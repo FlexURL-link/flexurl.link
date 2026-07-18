@@ -57,7 +57,8 @@ export function PublicFooter() {
         <div className="footer-grid">
           <div>
             <Link href="/" className="brand" style={{ marginBottom: '1rem' }}>
-              <img src="/flexurl-logo.png" alt="FlexURL" className="brand-logo" />
+              <img src="/flexurl-logo.png" alt="" className="brand-logo" />
+              <span>FlexURL</span>
             </Link>
             <p style={{ fontSize: '0.92rem', maxWidth: 320, marginTop: '0.85rem' }}>
               Privacy-first link shortener. No accounts, no tracking, no data collected.
