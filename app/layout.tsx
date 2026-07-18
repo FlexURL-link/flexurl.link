@@ -4,6 +4,7 @@ import './globals.css'
 export const metadata: Metadata = {
     title: 'FlexURL | Modern URL Redirection & Analytics',
     description: 'Transform your long links into short, memorable URLs and track your performance in real time with FlexURL.',
+    icons: '/favicon.png',
 }
 
 export default function RootLayout({
