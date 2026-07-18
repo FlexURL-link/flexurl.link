@@ -29,7 +29,8 @@ export function PublicNav() {
       />
       <div className="container landing-nav-inner" style={{ position: 'relative', zIndex: 1 }}>
         <Link href="/" className="brand">
-          <img src="/flexurl-logo.png" alt="FlexURL" className="brand-logo" />
+          <img src="/flexurl-logo.png" alt="" className="brand-logo" />
+          <span>FlexURL</span>
         </Link>
         <div className="nav-links">
           <Link href="/#features" className="nav-link">Features</Link>
