@@ -462,20 +462,20 @@ export default function Home() {
         .hero-badge {
           display: inline-flex;
           align-items: center;
-          gap: 0.45rem;
-          padding: 0.45rem 1rem;
+          gap: 0.5rem;
+          padding: 0.5rem 1.2rem;
           border-radius: 999px;
-          font-size: 0.82rem;
-          font-weight: 600;
-          color: #c4b5fd;
-          background: rgba(99, 102, 241, 0.1);
-          border: 1px solid rgba(99, 102, 241, 0.2);
-          letter-spacing: 0.02em;
-          margin-bottom: 1rem;
+          font-size: 0.88rem;
+          font-weight: 700;
+          color: #fff;
+          background: linear-gradient(135deg, #6366f1, #8b5cf6);
+          box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35);
+          letter-spacing: 0.025em;
+          margin-bottom: 1.25rem;
         }
 
         .hero-badge-icon {
-          font-size: 0.9rem;
+          font-size: 1rem;
         }
 
         /* === Hero form === */
