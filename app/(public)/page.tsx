@@ -106,21 +106,26 @@ export default function Home() {
 
         <div className="container hero-inner">
           <div className="hero-content animate-in">
-            <span className="eyebrow animate-in delay-1">
+            <div className="hero-badge animate-in delay-1">
+              <span className="hero-badge-icon">✦</span>
+              180 days since launch
+            </div>
+
+            <span className="eyebrow animate-in delay-2">
               <span className="eyebrow-dot" />
               Privacy first link shortener
             </span>
 
-            <h1 className="text-balance animate-in delay-2">
+            <h1 className="text-balance animate-in delay-3">
               Short links.<br />
               <span className="gradient-text">No compromise.</span>
             </h1>
 
-            <p className="text-balance animate-in delay-3">
+            <p className="text-balance animate-in delay-4">
               No account, no tracking, no cookies. Just a link that works.
             </p>
 
-            <div className="hero-trust animate-in delay-4">
+            <div className="hero-trust animate-in delay-5">
               <div className="trust-item">
                 <IconCheck /> No account needed
               </div>
@@ -452,6 +457,25 @@ export default function Home() {
 
         .trust-item :global(svg) {
           color: var(--success);
+        }
+
+        .hero-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.45rem;
+          padding: 0.45rem 1rem;
+          border-radius: 999px;
+          font-size: 0.82rem;
+          font-weight: 600;
+          color: #c4b5fd;
+          background: rgba(99, 102, 241, 0.1);
+          border: 1px solid rgba(99, 102, 241, 0.2);
+          letter-spacing: 0.02em;
+          margin-bottom: 1rem;
+        }
+
+        .hero-badge-icon {
+          font-size: 0.9rem;
         }
 
         /* === Hero form === */

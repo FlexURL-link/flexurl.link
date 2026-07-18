@@ -82,6 +82,7 @@ export function PublicFooter() {
 
         <div className="footer-bottom">
           <span>© 2026 FlexURL. Privacy first.</span>
+
           <a href="https://status.flexurl.link" target="_blank" rel="noreferrer" className="footer-tag" style={{ textDecoration: 'none' }}>
             <span className="status-dot" />
             Service online · 99.9% uptime
