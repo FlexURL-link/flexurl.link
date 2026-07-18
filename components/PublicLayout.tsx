@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 export function PublicNav() {
   return (
+    <>
     <header
       style={{
         position: 'fixed',
@@ -41,6 +42,11 @@ export function PublicNav() {
         </div>
       </div>
     </header>
+    <div className="announcement-bar">
+      <span className="announcement-bar-icon">✦</span>
+      <span>180 days since launch</span>
+    </div>
+    </>
   );
 }
 
@@ -82,6 +88,7 @@ export function PublicFooter() {
 
         <div className="footer-bottom">
           <span>© 2026 FlexURL. Privacy first.</span>
+
           <a href="https://status.flexurl.link" target="_blank" rel="noreferrer" className="footer-tag" style={{ textDecoration: 'none' }}>
             <span className="status-dot" />
             Service online · 99.9% uptime
