@@ -1,9 +1,11 @@
-import { redirect } from 'next/navigation';
+import { redirect, notFound } from 'next/navigation';
 import sql from '@/lib/db';
 import { decrypt } from '@/lib/encryption';
 
 export default async function RedirectPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+
+  if (slug === 'favicon.png') notFound();
 
   const result = await sql`SELECT url, expires_at FROM redirects WHERE id = ${slug}`;
 
