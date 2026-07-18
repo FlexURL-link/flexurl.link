@@ -361,8 +361,9 @@ export default function Home() {
         .hero {
           position: relative;
           padding-top: calc(var(--nav-height) + 36px + 4.5rem);
-          padding-bottom: 5rem;
-          overflow: hidden;
+          padding-bottom: 8rem;
+          overflow-x: hidden;
+          overflow-y: visible;
         }
 
         .hero-bg {
