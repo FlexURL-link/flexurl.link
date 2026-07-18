@@ -362,7 +362,8 @@ export default function Home() {
           position: relative;
           padding-top: calc(var(--nav-height) + 36px + 4.5rem);
           padding-bottom: 3rem;
-          overflow: hidden;
+          overflow-x: hidden;
+          overflow-y: visible;
         }
 
         .hero-bg {
@@ -938,10 +939,10 @@ export default function Home() {
         .section-darker {
           width: 100%;
           background: var(--bg-muted);
+          margin-top: 3rem;
         }
         .section-default {
           width: 100%;
-          margin-top: 2rem;
         }
 
         .toast-404 {
