@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 export function PublicNav() {
   return (
+    <>
     <header
       style={{
         position: 'fixed',
@@ -45,6 +46,7 @@ export function PublicNav() {
       <span className="announcement-bar-icon">✦</span>
       <span>180 days since launch</span>
     </div>
+    </>
   );
 }
 
