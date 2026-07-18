@@ -29,8 +29,7 @@ export function PublicNav() {
       />
       <div className="container landing-nav-inner" style={{ position: 'relative', zIndex: 1 }}>
         <Link href="/" className="brand">
-          <span className="brand-mark">D</span>
-          <span>FlexURL</span>
+          <img src="/flexurl-logo.png" alt="FlexURL" className="brand-logo" />
         </Link>
         <div className="nav-links">
           <Link href="/#features" className="nav-link">Features</Link>
@@ -57,8 +56,7 @@ export function PublicFooter() {
         <div className="footer-grid">
           <div>
             <Link href="/" className="brand" style={{ marginBottom: '1rem' }}>
-              <span className="brand-mark">D</span>
-              <span>FlexURL</span>
+              <img src="/flexurl-logo.png" alt="FlexURL" className="brand-logo" />
             </Link>
             <p style={{ fontSize: '0.92rem', maxWidth: 320, marginTop: '0.85rem' }}>
               Privacy-first link shortener. No accounts, no tracking, no data collected.

@@ -377,6 +377,11 @@ code,
   box-shadow: 0 6px 18px rgba(139, 92, 246, 0.32);
 }
 
+.brand-logo {
+  height: 32px;
+  width: auto;
+}
+
 .brand-pill {
   display: inline-flex;
   align-items: center;
