@@ -154,7 +154,7 @@ export default function PrivacyPage() {
               us at:
             </p>
             <ul>
-              <li>📧 <a href="mailto:privacy@flexurl.link">privacy@flexurl.link</a></li>
+              <li>📧 <a href="mailto:ddrayko@tutamail.com">ddrayko@tutamail.com</a></li>
               <li>📬 FlexURL — Privacy Team</li>
             </ul>
           </div>

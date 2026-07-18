@@ -198,7 +198,7 @@ export default function TermsPage() {
             </ul>
             <p>
               You may delete your account at any time from your dashboard or by contacting us at
-              <a href="mailto:privacy@flexurl.link">privacy@flexurl.link</a>. Deletion entails the erasure
+              <a href="mailto:ddrayko@tutamail.com">ddrayko@tutamail.com</a>. Deletion entails the erasure
               of your data in accordance with our privacy policy.
             </p>
 
@@ -227,8 +227,8 @@ export default function TermsPage() {
             <h2 id="contact">14. Contact</h2>
             <p>For any question regarding these Terms, you can contact us:</p>
             <ul>
-              <li>📧 <a href="mailto:legal@flexurl.link">legal@flexurl.link</a></li>
-              <li>📧 General support: <a href="mailto:contact@flexurl.link">contact@flexurl.link</a></li>
+              <li>📧 <a href="mailto:ddrayko@tutamail.com">ddrayko@tutamail.com</a></li>
+              <li>📧 General support: <a href="mailto:ddrayko@tutamail.com">ddrayko@tutamail.com</a></li>
               <li>🌐 Website: <a href="https://flexurl.link" target="_blank" rel="noreferrer">flexurl.link</a></li>
             </ul>
             <p>
